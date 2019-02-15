@@ -1,4 +1,4 @@
-extends layout
+extends ../layout
 
 block head-pack
 	script#bolt(src='https://sboxcheckout-static.citruspay.com/bolt/run/bolt.min.js', bolt-='', color='e34524', bolt-logo='http://boltiswatching.com/wp-content/uploads/2015/09/Bolt-Logo-e14421724859591.png')
@@ -17,6 +17,29 @@ block head-pack
 		}
 
 block body-pack
+
+	br
+	br
+	br
+	br
+
+	.container.bg-light
+		.row
+			.col-md-8
+				h3.mb-3 Billing
+				form.needs-validation
+					.row
+						.col-md-6
+							label(for="firstName") First Name
+							input.form-control(type="text" name="firstName")
+						.col-md-6
+							label(for="lastName") Last Name
+							input.form-control(type="text" name="lastName")
+					.mb-3
+						label(for="email") Email
+						input.form-control(type="email" name="email")
+			.col-md-4
+
 
 	.main
 		h2 Node.js Bolt
