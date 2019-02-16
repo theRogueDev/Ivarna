@@ -6,16 +6,14 @@ $(document).ready(function () {
 
 		if (validatePreEntries()) {
 			console.log("Ready to proceed");
+			// Populate valid details fields
+			var numPasses = $("#numPassesSelect").val();
+			generateFields(numPasses);
 		} else {
 			console.log("Pre-check failed");
 		}
 	});
 
-	// Populate valid details fields
-	$("#numPassesSelect").change(function () {
-		var numPasses = $(this).val();
-		generateFields(numPasses);
-	});
 
 });
 
@@ -39,15 +37,18 @@ function validatePreEntries() {
 
 
 function generateFields(numPasses) {
-
-	for (var i = 0; i < numPasses; i++) {
-		var fr = '<form action=\"' + $('#surl').val() + '\" method=\"post\">' +
-			'<input type=\"hidden\" name=\"firstName\" value=\"' + key + '\" />' +
-			'<input type=\"hidden\" name=\"lastName\" value=\"' +
-			'</form>';
-		var form = jQuery(fr);
-		jQuery('body').append(form);
-		form.submit();
-
+	$("#formContainer").empty();
+	for (var i = 1; i <= numPasses; i++) {
+		var fr = '<h5>Pass ' + i + '</h5>' + 
+			'<div class="row">' +
+			'<div class="col-md-6">' +
+			'<input class="form-control" placeholder="First Name" type="text" name="firstName-' + i + '"/>' +
+			'</div>' +
+			'<div class=" col-md-6">' +
+			'<input class="form-control" placeholder="Last Name" type="text" name="lastName-' + i + '"/>' + 
+			'</div>' +
+			'</div>';
+		var form = $(fr);
+		$('#formContainer').append(form);
 	}
 }
