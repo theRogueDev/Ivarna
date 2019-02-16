@@ -7,7 +7,7 @@ var router = express.Router();
 router.use(bodyParser);
 
 router.get('/', function (req, res, next) {
-	res.render('checkout', { title: "EDM Passes Checkout", orderid: uuidv1() });
+	res.render('pay/checkout', { title: "EDM Passes Checkout", orderid: uuidv1() });
 });
 
 router.post('/', function (req, res) {
