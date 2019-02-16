@@ -2,7 +2,7 @@ extends ../layout
 
 block head-pack
 	script#bolt(src='https://sboxcheckout-static.citruspay.com/bolt/run/bolt.min.js', bolt-='', color='e34524', bolt-logo='http://boltiswatching.com/wp-content/uploads/2015/09/Bolt-Logo-e14421724859591.png')
-		
+	script(src="js/checkValidation.js" type="text/javascript")
 	style(type='text/css').
 		.main {
 		margin-left: 30px;
@@ -27,15 +27,34 @@ block body-pack
 		.row
 			.col-md-8
 				h3.mb-3 Billing
-				form.needs-validation
+				form#passesForm.needs-validation
 					.row
 						.col-md-6
-							label(for="firstName") First Name
-							input.form-control(type="text" name="firstName")
+							.form-group
+								label(for="firstName") First Name
+								input.form-control(type="text" name="firstName")
 						.col-md-6
-							label(for="lastName") Last Name
-							input.form-control(type="text" name="lastName")
-					.mb-3
+							.form-group
+								label(for="lastName") Last Name
+								input.form-control(type="text" name="lastName")
+					.form-group
 						label(for="email") Email
 						input.form-control(type="email" name="email")
+					.form-group
+						label(for="phone") Phone
+						input.form-control(type="number" name="phone")
+					.form-group
+						label(for="numPasses") Number of Passes
+						select#numPassesSelect.form-control(name="numPasses") Number of Passes
+							option(value="1") 1
+							option(value="2") 2
+							option(value="3") 3
+							option(value="4") 4
+							option(value="5") 5
+							option(value="6") 6
+					button.btn.btn-primary(type="submit") Pay
+
 			.col-md-4
+	
+	br
+	br
