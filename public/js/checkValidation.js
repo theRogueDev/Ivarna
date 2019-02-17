@@ -1,19 +1,32 @@
 $(document).ready(function () {
 
-	// Validate the entries
-	$("#passesForm").submit(function (e) {
+	$("#finalForm").hide();
+
+	// Validate and proceed
+	$("#preCheckoutProceed").click(function (e) {
 		e.preventDefault();
 
 		if (validatePreEntries()) {
 			console.log("Ready to proceed");
-			// Populate valid details fields
 			var numPasses = $("#numPassesSelect").val();
+			// Hide pre-check form & submit button
+			$("#preCheckout").hide();
+			// Lock final fields and calculate amount
+			lockFinalFields(numPasses);
+			// Populate valid details fields
 			generateFields(numPasses);
+			$("#checkout").css("visibility", "visible");
 		} else {
 			console.log("Pre-check failed");
 		}
 	});
 
+
+	$("#checkout").click(function (e) { 
+		e.preventDefault();
+		
+
+	});
 
 });
 
@@ -35,10 +48,20 @@ function validatePreEntries() {
 	return proper;
 }
 
+function lockFinalFields(numPasses) {
+	var amount = numPasses * 800;
+	$("#finalFirstNameInput").val($("#firstNameInput").val());
+	$("#finalLastNameInput").val($("#lastNameInput").val());
+	$("#finalEmailInput").val($("#emailInput").val());
+	$("#finalPhoneInput").val($("#phoneInput").val());
+	$("#finalNumPasses").val($("#numPassesSelect").val());
+	$("#finalAmount").val(amount);
+
+	$("#finalForm").show();
+}
 
 function generateFields(numPasses) {
-	$("#formContainer").empty();
-	for (var i = 1; i <= numPasses; i++) {
+	for (var i = numPasses; i > 0; i--) {
 		var fr = '<h5>Pass ' + i + '</h5>' + 
 			'<div class="row">' +
 			'<div class="col-md-6">' +
@@ -49,6 +72,6 @@ function generateFields(numPasses) {
 			'</div>' +
 			'</div>';
 		var form = $(fr);
-		$('#formContainer').append(form);
+		$('#postCheckout').prepend(form);
 	}
 }
