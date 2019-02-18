@@ -1,22 +1,46 @@
 var express = require('express');
-var crypto = require('crypto');
+var checksum = require('../checksum/checksum');
 var uuidv1 = require('uuid/v1');
 var bodyParser = require('body-parser').json();
 
 var router = express.Router();
 router.use(bodyParser);
 
-router.get('/', function (req, res, next) {
-	res.render('pay/checkout', { title: "EDM Passes Checkout", orderid: uuidv1() });
-});
+// router.get('/', function (req, res, next) {
+// 	res.render('pay/checkout', { title: "EDM Passes Checkout" });
+// });
 
-router.post('/', function (req, res) {
+router.get('/', function (req, res) {
+	res.render('pay/test', { title: "pay test" });
+})
+
+router.post('/get-checksum', function (req, res) {
 	var data = req.body;
-	var cryp = crypto.createHash('sha512');
-	var text = data.key + '|' + data.txnid + '|' + data.amount + '|' + data.pinfo + '|' + data.fname + '|' + data.email + '|||||' + data.udf5 + '||||||' + data.salt;
-	cryp.update(text);
-	var hash = cryp.digest('hex');
-	res.send(JSON.stringify(hash));
+
+	console.log(data);
+
+	var key = "PNm!rhPpPvqPt2Sp";
+	var params = {};
+	params['MID'] = "PuVkxz55638115176164";
+	params['WEBSITE'] = "https://google.com";
+	params['CHANNEL_ID'] = "WEB";
+	params['INDUSTRY_TYPE_ID'] = "Retail";
+	params['ORDER_ID'] = uuidv1();
+	params['CUST_ID'] = data.name;
+	params['TXN_AMOUNT'] = 5 * 800;
+	params['CALLBACK_URL'] = "http://localhost:/3000/pay/response";
+	params['EMAIL'] = data.email;
+	params['MOBILE_NO'] = data.phone;
+
+	checksum.genchecksum(params, key, function (err, checksum) {
+		if (err) console.log(err);
+		params.CHECKSUMHASH = cheksum;
+		res.send(JSON.stringify(params));
+		console.log("3");
+	});
+
+	console.log("4");
+
 });
 
 router.post('/response', function (req, res) {
