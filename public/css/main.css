@@ -1657,7 +1657,7 @@ header ul.menu li a.nav-link {
   font-weight: 400;
   display: block;
   text-transform: uppercase;
-  color: #ffffff;
+  color: black;
 }
 header ul.menu li a.nav-link:hover {
   color: #f50136;
@@ -1704,13 +1704,17 @@ header li ul.sub_menu li a:hover {
 }
 
 header.sticky_header {
-  background-color: #18181c;
+  background-color: rgba(17, 17, 17, 0.95);
   margin: 0;
   padding: 5px;
   -webkit-box-shadow: 0 0 42px rgba(0, 0, 0, 0.08);
   box-shadow: 0 0 42px rgba(0, 0, 0, 0.08);
   -webkit-transition: all ease-in-out 0.4s;
   transition: all ease-in-out 0.4s;
+}
+
+header.sticky_header a.nav-link {
+  color: whitesmoke !important;
 }
 
 .navbar-toggler {
