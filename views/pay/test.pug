@@ -16,4 +16,6 @@ block body-pack
 		input#email(name="email" type="email")
 		button(type="submit") Submit
 
-	form(id="f2" action="https://securegw-stage.paytm.in/theia/processTransaction")
+	//- prod: https://securegw.paytm.in/theia/processTransaction
+	//- staging: https://securegw-stage.paytm.in/theia/processTransaction
+	form(id="f2" action="https://securegw.paytm.in/theia/processTransaction")

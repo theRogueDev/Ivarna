@@ -27,7 +27,7 @@ router.post('/get-checksum', function (req, res) {
 	params['INDUSTRY_TYPE_ID'] = "Retail";
 	params['ORDER_ID'] = uuidv1();
 	params['CUST_ID'] = data.name;
-	params['TXN_AMOUNT'] = 5 * 800;
+	params['TXN_AMOUNT'] = 5;
 	params['CALLBACK_URL'] = "https://ivarna.herokuapp.com/pay/response";
 	params['EMAIL'] = data.email;
 	params['MOBILE_NO'] = data.phone;
