@@ -19,10 +19,10 @@ router.post('/get-checksum', function (req, res) {
 
 	console.log(data);
 
-	var key = "PNm!rhPpPvqPt2Sp";
+	var key = "E7yyNS2mbS2SE2&r";
 	var params = {};
 	params['MID'] = "ZhCLfm38291372078650";
-	params['WEBSITE'] = "https://ivarna.herokuapp.com";
+	params['WEBSITE'] = "DEFAULT";
 	params['CHANNEL_ID'] = "WEB";
 	params['INDUSTRY_TYPE_ID'] = "Retail";
 	params['ORDER_ID'] = uuidv1();
