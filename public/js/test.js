@@ -1,11 +1,6 @@
 $(document).ready(function () {
 	$("#f1").submit(function (e) { 
 		e.preventDefault();
-		var data = {
-			
-		}
-		// var data = JSON.stringify($("#f1").serializeArray());
-		// console.log(data);
 		$.post("/pay/get-checksum", {
 			"name": $("#name").val(),
 			"phone": $("#phone").val(),
@@ -18,7 +13,7 @@ $(document).ready(function () {
 				for (var key in transactionPack) {
 					$("#f2").append("<input name='" + key + "' " + "value='" + transactionPack[key] + "'/>");
 				}
-				$("f2").submit();
+				$("#f2").submit();
 			},
 			"json"
 		);

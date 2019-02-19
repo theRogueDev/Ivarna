@@ -1,7 +1,6 @@
 extends ../layout
 
 block head-pack
-	script#bolt(src='https://sboxcheckout-static.citruspay.com/bolt/run/bolt.min.js', bolt-='', color='e34524', bolt-logo='http://boltiswatching.com/wp-content/uploads/2015/09/Bolt-Logo-e14421724859591.png')
 	script(src="js/checkValidation.js" type="text/javascript")
 	style(type='text/css').
 		.main {
@@ -39,7 +38,7 @@ block body-pack
 			.col-md-8
 				h3 Billing
 				form#passesForm.needs-validation
-					span#preCheckout
+					span#fields
 						.row
 							.col-md-6
 								.form-group
@@ -61,44 +60,15 @@ block body-pack
 								.form-group
 									label(for="numPasses") Number of Passes
 									select#numPassesSelect.form-control(name="numPasses") Number of Passes
-										option(value="1") 1
+										option(value="1" selected="selected") 1
 										option(value="2") 2
 										option(value="3") 3
 										option(value="4") 4
 										option(value="5") 5
 										option(value="6") 6
 					
-						button#preCheckoutProceed.btn.btn-primary(type="submit") Proceed
-					
-					
-				from#finalForm.needs-validation
-					.row
-						.col-md-6
-							.form-group
-								label(for="firstName") First Name
-								input#finalFirstNameInput.form-control(type="text" readonly name="firstName")
-						.col-md-6
-							.form-group
-								label(for="lastName") Last Name
-								input#finalLastNameInput.form-control(type="text" readonly name="lastName")
-					.form-group
-						label(for="email") Email
-						input#finalEmailInput.form-control(type="email" name="email" readonly)
-					.row
-						.col-md-8
-							label(for="phone") Phone
-							input#finalPhoneInput.form-control(type="number" readonly name="phone")
-						.col-md-4
-							label(for="numPasses") Number of Passes
-							input#finalNumPasses.form-control(name="numPasses" readonly type="number")
-					.form-group
-						label(for="amount") Amount
-						input#finalAmount.form-control(type="number" readonly name="amount")
-
-					span#postCheckout
-						
-						button#checkout.btn.btn-primary(type="submit" style="visibility: hidden;") Checkout
-	
+					button#checkoutProceed.btn.btn-primary(type="submit") Proceed
+					button#checkout.btn.btn-primary(type="submit") Checkout
 
 	br
 	br
