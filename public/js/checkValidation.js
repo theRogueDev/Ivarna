@@ -1,19 +1,57 @@
 $(document).ready(function () {
 
-	// Validate the entries
-	$("#passesForm").submit(function (e) {
+	$("#checkout").hide();
+
+	// Validate and proceed
+	$("#checkoutProceed").click(function (e) {
 		e.preventDefault();
 
 		if (validatePreEntries()) {
 			console.log("Ready to proceed");
-			// Populate valid details fields
 			var numPasses = $("#numPassesSelect").val();
+			$("#checkoutProceed").hide();
+			// Lock final fields and calculate amount
+			lockFinalFields(numPasses);
+			// Populate valid details fields
 			generateFields(numPasses);
+			$("#checkout").show();
 		} else {
 			console.log("Pre-check failed");
 		}
 	});
 
+
+	$("#checkout").click(function (e) { 
+		e.preventDefault();
+
+		var fields = $("#fields input");
+		var formData = {};
+
+		for (var i = 0; i < fields.length; i++) {
+			formData[fields[i].name] = fields[i].value;
+		}
+		formData['numPasses'] = $("#numPassesSelect").val();
+
+		console.log(formData);
+		
+		$.post("/pay/checkout", formData,
+			function (resp) {
+				console.log(resp);
+				var transactionPack = resp;
+				console.log(transactionPack);
+				
+				//- prod: https://securegw.paytm.in/theia/processTransaction
+				//- staging: https://securegw-stage.paytm.in/theia/processTransaction
+				$("body").append($('<form id="f2" action="https://securegw.paytm.in/theia/processTransaction" method="post" style="visibility: hidden;"></form>'));
+
+				for (var key in transactionPack) {
+					$("#f2").append("<input name='" + key + "' " + "value='" + transactionPack[key] + "'/>");
+				}
+				$("#f2").submit();
+			},
+			"json"
+		);
+	});
 
 });
 
@@ -35,9 +73,17 @@ function validatePreEntries() {
 	return proper;
 }
 
+function lockFinalFields(numPasses) {
+	var amount = numPasses * 800;
+
+	$("#fields input").attr("readonly", "true");
+	$("#numPassesSelect").attr("readonly", "true");
+	
+	$("#fields").append('<div class="form-group"><label for="amount">Amount</label><input name="amount" class="form-control" id="finalAmount" readonly /></div>');
+	$("#finalAmount").val(amount);
+}
 
 function generateFields(numPasses) {
-	$("#formContainer").empty();
 	for (var i = 1; i <= numPasses; i++) {
 		var fr = '<h5>Pass ' + i + '</h5>' + 
 			'<div class="row">' +
@@ -49,6 +95,6 @@ function generateFields(numPasses) {
 			'</div>' +
 			'</div>';
 		var form = $(fr);
-		$('#formContainer').append(form);
+		$('#fields').append(form);
 	}
 }

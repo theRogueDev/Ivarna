@@ -1,0 +1,21 @@
+extends ../layout
+
+block head-pack
+
+	script(src="js/test.js" type="text/javascript")
+
+
+block body-pack
+
+	form(id="f1" method="post")
+		label(for="name") Name
+		input#name(name="name" type="text")
+		label(for="phone") Phone
+		input#phone(name="phone" type="number")
+		label(for="email") Email
+		input#email(name="email" type="email")
+		button(type="submit") Submit
+
+	//- prod: https://securegw.paytm.in/theia/processTransaction
+	//- staging: https://securegw-stage.paytm.in/theia/processTransaction
+	form(id="f2" action="https://securegw.paytm.in/theia/processTransaction")
