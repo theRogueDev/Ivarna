@@ -13,7 +13,8 @@ $(document).ready(function () {
 		},
 			function (resp) {
 				console.log(resp);
-				var transactionPack = JSON.parse(resp);
+				var transactionPack = resp;
+				console.log(transactionPack);
 				for (var key in transactionPack) {
 					$("#f2").append("<input name='" + key + "' " + "value='" + transactionPack[key] + "'/>");
 				}
