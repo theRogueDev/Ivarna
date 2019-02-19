@@ -11,7 +11,8 @@ var payRouter = require('./routes/pay');
 var app = express();
 
 // DB connection
-mongoose.connect("mongodb+srv://arbiter:Kpragat21@laniakea-pzo4s.mongodb.net/registrations?retryWrites=true", { useNewUrlParser: true });
+// mongoose.connect("mongodb+srv://arbiter:Kpragat21@laniakea-pzo4s.mongodb.net/registrations?retryWrites=true", { useNewUrlParser: true });
+mongoose.connect("mongodb://arbiter:Kpragat21@ds343985.mlab.com:43985/heroku_pv35txsp", { useNewUrlParser: true });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
