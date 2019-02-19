@@ -89,7 +89,6 @@ router.post('/checkout', function (req, res) {
 
 router.post('/response', function (req, res) {
 	var response = req.body;
-	res.send(req.body);
 
 	if (response.RESPCODE == 1) {
 		EdmPass.update({'order_id': response.order_id}, {$set: {'status':'CONFIRMED'}}).exec();
