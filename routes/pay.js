@@ -69,9 +69,6 @@ router.post('/checkout', function (req, res) {
 	params['MID'] = "ZhCLfm38291372078650";
 	params['WEBSITE'] = "DEFAULT";
 	params['CHANNEL_ID'] = "WEB";
-	params['PAYMENT_MODE_ONLY'] = "YES";
-	params['PAYMENT_TYPE_ID'] = "CC";
-	params['AUTH_MODE'] = "3D";
 	params['INDUSTRY_TYPE_ID'] = "Retail";
 	params['ORDER_ID'] = transaction.order_id;
 	params['CUST_ID'] = data.email;
