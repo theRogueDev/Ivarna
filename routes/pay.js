@@ -117,7 +117,8 @@ router.post('/response', function (req, res) {
 				order_id: response.ORDERID,
 				amount: response.TXNAMOUNT,
 				date: response.TXNDATE,
-				payment_method: response.PAYMENTMODE
+				payment_method: response.PAYMENTMODE,
+				numPasses: doc.numPasses
 			};
 			var email = doc.email;
 			var mailOptions = {
