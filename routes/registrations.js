@@ -9,5 +9,4 @@ router.get('/:event', function (req, res) {
 
 });
 
-
 module.exports = router;

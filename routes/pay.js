@@ -61,6 +61,7 @@ router.post('/checkout', function (req, res) {
 	transaction.status = "PENDING";
 	transaction.order_id = uuidv1();
 	transaction.numPasses = data.numPasses;
+	transaction.type = "VIP";
 	transaction.passes = names;
 
 	EdmPass.create(transaction, function (err, resp) {
