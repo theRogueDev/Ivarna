@@ -72,7 +72,7 @@ router.post('/checkout', function (req, res) {
 	params['INDUSTRY_TYPE_ID'] = "Retail";
 	params['ORDER_ID'] = transaction.order_id;
 	params['CUST_ID'] = data.email;
-	params['TXN_AMOUNT'] = data.numPasses;
+	params['TXN_AMOUNT'] = data.numPasses * 800;
 	params['CALLBACK_URL'] = "https://ivarna.herokuapp.com/pay/response";
 	params['EMAIL'] = data.email;
 	params['MOBILE_NO'] = data.phone;
