@@ -122,6 +122,12 @@ router.post('/response', function (req, res) {
 				subject: 'Your EDM passes are confirmed!', // Subject line
 				html: pug.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
 			};
+
+			transporter.sendMail(mailOptions).then(function(value) {
+				console.log(value);
+			}).catch(function(reason) {
+				console.log(reason);
+			})
 			res.render('pay/receipt', locals);
 		});
 
