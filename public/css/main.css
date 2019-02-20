@@ -1699,6 +1699,10 @@ header li ul.sub_menu li a:hover {
   -webkit-transform: translate3d(2px, 0, 0);
 }
 
+header img {
+	transition-duration: 1.5s;
+}
+
 .navbar {
   padding: 0;
 }
@@ -1711,6 +1715,11 @@ header.sticky_header {
   box-shadow: 0 0 42px rgba(0, 0, 0, 0.08);
   -webkit-transition: all ease-in-out 0.4s;
   transition: all ease-in-out 0.4s;
+}
+
+header.sticky_header img {
+	transition-duration: 1.5s;
+	filter: invert(100%) !important;
 }
 
 header.sticky_header a.nav-link {
