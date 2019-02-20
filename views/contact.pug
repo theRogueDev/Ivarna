@@ -3,7 +3,7 @@ extends layout
 block body-pack
 	
 	// Page Title Section
-	section.inner_cover.parallax-window(data-parallax='scroll', data-image-src='assets/img/bg/bg-img.png')
+	section.inner_cover.parallax-window(data-parallax='scroll', data-image-src='/img/bg/contact.png')
 		.overlay_dark
 		.container
 			.row.justify-content-center.align-items-center
@@ -21,13 +21,13 @@ block body-pack
 					p You can contact us directly for any other queries regarding the fest through any of the following channels.
 					ul.social_list
 						li
-							a(href='#')
+							a(href='https://www.facebook.com/ivarna2k19/' target='_')
 								i.ion-social-facebook
 						li
-							a(href='#')
+							a(href='https://twitter.com/IvarnaKlh' target='_')
 								i.ion-social-twitter
 						li
-							a(href='#')
+							a(href='https://www.instagram.com/klhivarna/?hl=en' target='_')
 								i.ion-social-instagram
 					ul.icon_list.pt50
 						li
@@ -35,8 +35,10 @@ block body-pack
 							span KL Hyderabad, Aziz Nagar, Hyderabad, TS 500075
 						li
 							i.ion-ios-telephone
-							span +91 XXXX-YYYYYY
+							span +91 99498 91598
 						li
 							i.ion-email-unread
 							span ivarna@klh.edu.in
 	// Contact Section End
+
+	include ./mods/edm-passes

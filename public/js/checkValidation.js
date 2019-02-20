@@ -9,7 +9,7 @@ $(document).ready(function () {
 		if (validatePreEntries()) {
 			console.log("Ready to proceed");
 			var numPasses = $("#numPassesSelect").val();
-			$("#checkoutProceed").hide();
+			$("#checkoutProceed").remove();
 			// Lock final fields and calculate amount
 			lockFinalFields(numPasses);
 			// Populate valid details fields
