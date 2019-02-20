@@ -92,10 +92,9 @@ router.post('/response', function (req, res) {
 	
 	console.log(response.RESPCODE);
 	console.log(response);
-	console.log((response.RESPCODE == 1));
 
-	if (response.RESPMSG == "Txn Successful") {
-		EdmPass.update({'order_id': response.order_id}, {$set: {'status':'CONFIRMED'}}).exec();
+	if (response.RESPCODE == 1) {
+		EdmPass.update({'order_id': response.ORDERID}, {$set: {'status':'CONFIRMED'}}).exec();
 		res.send("Your passes have been confirmed");
 	} else {
 		EdmPass.deleteOne({order_id: response.order_id});
