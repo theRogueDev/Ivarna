@@ -116,7 +116,6 @@ router.post('/response', function (req, res) {
 				payment_method: response.PAYMENTMODE
 			};
 			var email = doc.email;
-			var html = pug.render('../views/pay/receipt', locals);
 			var mailOptions = {
 				from: 'ivarna@klh.edu.in', // sender address
 				to: doc.email, // list of receivers
