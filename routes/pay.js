@@ -3,6 +3,17 @@ var checksum = require('../checksum/checksum');
 var uuidv1 = require('uuid/v1');
 var bodyParser = require('body-parser').json();
 var mongoose = require('mongoose');
+var nodemailer = require('nodemailer');
+var pug = require('pug');
+var path = require('path');
+
+var transporter = nodemailer.createTransport({
+	service: 'gmail',
+	auth: {
+		user: 'ivarna@klh.edu.in',
+		pass: 'Ivarna@123'
+	}
+});
 
 var edmSchema = new mongoose.Schema({
 	order_id: String,
@@ -43,12 +54,12 @@ router.post('/checkout', function (req, res) {
 	transaction.phone = data.phone;
 	transaction.email = data.email;
 	transaction.amount = data.numPasses * 800;
-	transaction.status = "PENDING",
+	transaction.status = "PENDING";
 	transaction.order_id = uuidv1();
 	transaction.numPasses = data.numPasses;
 	transaction.passes = names;
 
-	EdmPass.create(transaction, function(err, resp) {
+	EdmPass.create(transaction, function (err, resp) {
 		if (err) console.log(err);
 		else console.log(resp);
 	});
@@ -72,7 +83,7 @@ router.post('/checkout', function (req, res) {
 	params['INDUSTRY_TYPE_ID'] = "Retail";
 	params['ORDER_ID'] = transaction.order_id;
 	params['CUST_ID'] = data.email;
-	params['TXN_AMOUNT'] = data.numPasses * 800;
+	params['TXN_AMOUNT'] = data.numPasses;
 	params['CALLBACK_URL'] = "https://ivarna.herokuapp.com/pay/response";
 	params['EMAIL'] = data.email;
 	params['MOBILE_NO'] = data.phone;
@@ -88,26 +99,45 @@ router.post('/checkout', function (req, res) {
 });
 
 router.post('/response', function (req, res) {
+
 	var response = req.body;
-	
+
 	console.log(response.RESPCODE);
 	console.log(response);
 
 	if (response.RESPCODE == 1) {
-		EdmPass.update({'order_id': response.ORDERID}, {$set: {'status':'CONFIRMED'}}).exec();
-		res.send("Your passes have been confirmed");
+		EdmPass.update({ 'order_id': response.ORDERID }, { $set: { 'status': 'CONFIRMED' } }).exec();
+
+		EdmPass.findOne({ order_id: response.ORDERID }, function (err, doc) {
+			var locals = {
+				order_id: response.ORDERID,
+				amount: response.TXNAMOUNT,
+				date: response.TXNDATE,
+				payment_method: response.PAYMENTMODE
+			};
+			var email = doc.email;
+			var html = pug.render('../views/pay/receipt', locals);
+			var mailOptions = {
+				from: 'ivarna@klh.edu.in', // sender address
+				to: doc.email, // list of receivers
+				subject: 'Your EDM passes are confirmed!', // Subject line
+				html: pug.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
+			};
+			res.render('pay/receipt', locals);
+		});
+
 	} else {
-		EdmPass.deleteOne({order_id: response.order_id});
+		EdmPass.deleteOne({ order_id: response.order_id });
 		res.send("Transaction was unable to complete");
 	}
 
 });
 
 // Testing route
-router.get('/test', function(req, res) {
+router.get('/test', function (req, res) {
 
-	EdmPass.update({'order_id': "81e4d040-3482-11e9-9805-3d3aeedb140c"}, {$set: {'status':'CONFIRMED'}}).exec();
-	res.send("Your passes have been confirmed");
+	// EdmPass.update({ 'order_id': "81e4d040-3482-11e9-9805-3d3aeedb140c" }, { $set: { 'status': 'CONFIRMED' } }).exec();
+	// res.send("Your passes have been confirmed");
 })
 
 module.exports = router;
