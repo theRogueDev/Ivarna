@@ -89,9 +89,12 @@ router.post('/checkout', function (req, res) {
 
 router.post('/response', function (req, res) {
 	var response = req.body;
+	
+	console.log(response.RESPCODE);
+	console.log(response);
 
 	if (response.RESPCODE == 1) {
-		EdmPass.update({'order_id': response.order_id}, {$set: {'status':'CONFIRMED'}}).exec();
+		EdmPass.update({'order_id': response.ORDERID}, {$set: {'status':'CONFIRMED'}}).exec();
 		res.send("Your passes have been confirmed");
 	} else {
 		EdmPass.deleteOne({order_id: response.order_id});
@@ -99,5 +102,12 @@ router.post('/response', function (req, res) {
 	}
 
 });
+
+// Testing route
+router.get('/test', function(req, res) {
+
+	EdmPass.update({'order_id': "81e4d040-3482-11e9-9805-3d3aeedb140c"}, {$set: {'status':'CONFIRMED'}}).exec();
+	res.send("Your passes have been confirmed");
+})
 
 module.exports = router;
