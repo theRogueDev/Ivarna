@@ -11,9 +11,9 @@ var qrcode = require('qrcode');
 var transporter = nodemailer.createTransport({
 	service: 'gmail',
 	host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    requireTLS: true,
+	port: 587,
+	secure: false,
+	requireTLS: true,
 	auth: {
 		user: 'ivarna@klh.edu.in',
 		pass: 'Ivarna@123'
@@ -113,10 +113,10 @@ router.post('/response', function (req, res) {
 
 	if (response.RESPCODE == 1) {
 		EdmPass.update({ 'order_id': response.ORDERID }, { $set: { 'status': 'CONFIRMED' } }).exec();
-		
+
 		EdmPass.findOne({ order_id: response.ORDERID }, function (err, doc) {
-			qrcode.toDataURL(response.ORDERID, function(err, qr) {
-				var qrcode = `<img src='${qr}'>`; 
+			qrcode.toDataURL(response.ORDERID, function (err, qr) {
+				var qrcode = `<img src='${qr}'>`;
 				var locals = {
 					order_id: response.ORDERID,
 					amount: response.TXNAMOUNT,
@@ -132,15 +132,15 @@ router.post('/response', function (req, res) {
 					subject: 'Your EDM passes are confirmed!', // Subject line
 					html: pug.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
 				};
-	
-				transporter.sendMail(mailOptions).then(function(value) {
+
+				transporter.sendMail(mailOptions).then(function (value) {
 					console.log(value);
-				}).catch(function(reason) {
+				}).catch(function (reason) {
 					console.log(reason);
 				})
 				res.render('pay/receipt', locals);
 			});
-			});
+		});
 
 	} else {
 		EdmPass.deleteOne({ order_id: response.order_id });
@@ -152,18 +152,18 @@ router.post('/response', function (req, res) {
 // Testing route
 router.get('/test', function (req, res) {
 	var order_id = "81e4d040-3482-11e9-9805-3d3aeedb140c";
-    //var dom = new jsdom.JSDOM();
-    //var howla = dom.window.document.createElement("div");
-    //howla.setAttribute('id', 'howla');
+	//var dom = new jsdom.JSDOM();
+	//var howla = dom.window.document.createElement("div");
+	//howla.setAttribute('id', 'howla');
 
 
-    run(res).catch(error => console.error(error.stack));
+	run(res).catch(error => console.error(error.stack));
 
-    async function run(response) {
-        const res = await qrcode.toDataURL(order_id);
-        var tag = `<img src='${res}'>`;
-        response.send(tag);
-    }
+	async function run(response) {
+		const res = await qrcode.toDataURL(order_id);
+		var tag = `<img src='${res}'>`;
+		response.send(tag);
+	}
 })
 
 module.exports = router;

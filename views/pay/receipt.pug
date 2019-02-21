@@ -1,6 +1,6 @@
 html
 	head
-		title Your passes for Ivarna's EDM Night
+		title #{title}
 		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
 		meta(name="viewport" content="width=device-width")
 		meta(name="robots" content="noindex, nofollow")
@@ -158,7 +158,7 @@ html
 										tr
 											td.Spacer.Spacer--gutter(width="64" style="border: 0;border-collapse: collapse;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;color: #ffffff;font-size: 1px;line-height: 1px;mso-line-height-rule: exactly;")  
 											td.Content.Title-copy.Font.Font--title(align="center" style="border: 0;border-collapse: collapse;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;width: 472px;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;mso-line-height-rule: exactly;vertical-align: middle;color: #32325d;font-size: 24px;line-height: 32px;")
-												| Your passes have been confirmed
+												| #{headline}
 											td.Spacer.Spacer--gutter(width="64" style="border: 0;border-collapse: collapse;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;color: #ffffff;font-size: 1px;line-height: 1px;mso-line-height-rule: exactly;")  
 								table.Section.Divider(width="100%" style="border: 0;border-collapse: collapse;margin: 0;padding: 0;background-color: #ffffff;")
 									tbody
@@ -250,7 +250,7 @@ html
 																			td.Table-divider.Spacer(colspan="3" height="6" style="border: 0;border-collapse: collapse;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;color: #ffffff;font-size: 1px;line-height: 1px;mso-line-height-rule: exactly;")  
 																		tr
 																			td.Table-description.Font.Font--caption.Font--uppercase.Font--mute.Delink(style="border: 0;border-collapse: collapse;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;mso-line-height-rule: exactly;vertical-align: middle;color: #8898aa;font-size: 12px;line-height: 16px;font-weight: bold;text-transform: uppercase;")
-																				| March 16, 2019
+																				| #{event_date}
 																			td.Spacer.Table-gap(width="8" style="border: 0;border-collapse: collapse;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;color: #ffffff;font-size: 1px;line-height: 1px;mso-line-height-rule: exactly;")  
 																			td.Spacer.Table-gap(style="border: 0;border-collapse: collapse;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;color: #ffffff;font-size: 1px;line-height: 1px;mso-line-height-rule: exactly;")  
 																		tr
@@ -260,9 +260,9 @@ html
 																		tr
 																			td.Table-description.Font.Font--body(style="border: 0;border-collapse: collapse;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;mso-line-height-rule: exactly;vertical-align: middle;color: #525f7f;font-size: 15px;line-height: 24px;")
 																				div(style="")
-																					| EDM Pass (#{type})
+																					| #{itemline}
 																					span.Content.Font.Font--mute.Delink(style="border: 0;border-collapse: collapse;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;mso-line-height-rule: exactly;color: #8898aa;font-size: 14px;line-height: 14px;")
-																						| × #{numPasses}
+																						| × #{quantity}
 																			td.Spacer.Table-gap(width="8" style="border: 0;border-collapse: collapse;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;color: #ffffff;font-size: 1px;line-height: 1px;mso-line-height-rule: exactly;")  
 																			td.Table-amount.Font.Font--body(align="right" valign="top" style="border: 0;border-collapse: collapse;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;mso-line-height-rule: exactly;vertical-align: middle;color: #525f7f;font-size: 15px;line-height: 24px;")
 																				| #{amount}
