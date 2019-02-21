@@ -114,30 +114,31 @@ router.post('/response', function (req, res) {
 		EdmPass.update({ 'order_id': response.ORDERID }, { $set: { 'status': 'CONFIRMED' } }).exec();
 
 		EdmPass.findOne({ order_id: response.ORDERID }, function (err, doc) {
-			var qr = await qrcode.toDataURL(order_id);
-			var locals = {
-				order_id: response.ORDERID,
-				amount: response.TXNAMOUNT,
-				date: response.TXNDATE,
-				payment_method: response.PAYMENTMODE,
-				numPasses: doc.numPasses,
-				qrcode: `<img src='${qr}'>`
-			};
-			var email = doc.email;
-			var mailOptions = {
-				from: 'ivarna@klh.edu.in', // sender address
-				to: doc.email, // list of receivers
-				subject: 'Your EDM passes are confirmed!', // Subject line
-				html: pug.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
-			};
-
-			transporter.sendMail(mailOptions).then(function(value) {
-				console.log(value);
-			}).catch(function(reason) {
-				console.log(reason);
-			})
-			res.render('pay/receipt', locals);
-		});
+			qrcode.toDataURL(order_id, function(err, qr) {
+				var locals = {
+					order_id: response.ORDERID,
+					amount: response.TXNAMOUNT,
+					date: response.TXNDATE,
+					payment_method: response.PAYMENTMODE,
+					numPasses: doc.numPasses,
+					qrcode: `<img src='${qr}'>`
+				};
+				var email = doc.email;
+				var mailOptions = {
+					from: 'ivarna@klh.edu.in', // sender address
+					to: doc.email, // list of receivers
+					subject: 'Your EDM passes are confirmed!', // Subject line
+					html: pug.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
+				};
+	
+				transporter.sendMail(mailOptions).then(function(value) {
+					console.log(value);
+				}).catch(function(reason) {
+					console.log(reason);
+				})
+				res.render('pay/receipt', locals);
+			});
+			});
 
 	} else {
 		EdmPass.deleteOne({ order_id: response.order_id });
