@@ -65,8 +65,8 @@ module.exports = {
         price: 400,
         date: "March 16, 2019"
     },
-    espirit: {
-        id: 'espirit',
+    esprit: {
+        id: 'esprit',
         title: 'Espirit de Corps',
         price: 300,
         date: "March 15, 2019"

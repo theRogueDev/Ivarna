@@ -125,7 +125,6 @@ router.post('/response', function (req, res) {
 					numPasses: doc.numPasses,
 					qrcode: qrcode
 				};
-				var email = doc.email;
 				var mailOptions = {
 					from: 'ivarna@klh.edu.in', // sender address
 					to: doc.email, // list of receivers
@@ -152,11 +151,6 @@ router.post('/response', function (req, res) {
 // Testing route
 router.get('/test', function (req, res) {
 	var order_id = "81e4d040-3482-11e9-9805-3d3aeedb140c";
-	//var dom = new jsdom.JSDOM();
-	//var howla = dom.window.document.createElement("div");
-	//howla.setAttribute('id', 'howla');
-
-
 	run(res).catch(error => console.error(error.stack));
 
 	async function run(response) {
