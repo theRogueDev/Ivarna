@@ -32,10 +32,29 @@ block body-pack
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Register
+							a(href='registrations/hackathon') 
+								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Rules 
+							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#hackathonModal") Rules
+							#hackathonModal.modal.fade(role='dialog')
+								.modal-dialog
+									// Modal content
+									.modal-content
+										.modal-header
+											button.close(type='button', data-dismiss='modal') ×
+											h4.modal-title HACKATHON
+										.modal-body
+												ul 
+													h5 RULES
+													li All components required must be brought by the participants.
+													li Computers will be provided by the university provided prior information is given.
+													li Participants should not bring pre-made prototypes or programs, if found the team will immediately be disqualified.
+													li Damaging any equipment will result in a hefty fine.
+													li Given participant ID card must be worn at all times till the adjournment of the competition.
+										.modal-footer
+											button.btn.btn-default(type='button', data-dismiss='modal') Close
+
 
 			.event_box#coding
 				img(src='img/events/Coding.jpg', alt='event')
@@ -58,10 +77,25 @@ block body-pack
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Register
+							a(href='registrations/coding')
+								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Rules
+							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#codingModal") Rules
+							#codingModal.modal.fade(role='dialog')
+								.modal-dialog
+									// Modal content
+									.modal-content
+										.modal-header
+											button.close(type='button', data-dismiss='modal') ×
+											h4.modal-title CODING
+										.modal-body
+												ul 
+													h5 RULES
+													li It is advisable for the participants to bring their own laptops for the competition.
+													li Installation of required software must be completed before the event starts.
+										.modal-footer
+											button.btn.btn-default(type='button', data-dismiss='modal') Close
 			.event_box#projectexpo
 				img(src='img/events/ProjectExpo.jpg', alt='event')
 				.event_info
@@ -78,10 +112,26 @@ block body-pack
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Register
+							a(href='registrations/expo')
+								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Rules
+							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#expoModal") Rules
+							#expoModal.modal.fade(role='dialog')
+								.modal-dialog
+									// Modal content
+									.modal-content
+										.modal-header
+											button.close(type='button', data-dismiss='modal') ×
+											h4.modal-title PROJECT EXPO
+										.modal-body
+												ul 
+													h5 RULES
+													li In paper presentation abstracts should be made presentable for the competition. The idea with futuristic implementation plan is compulsary.
+													li In poster presentation all materials required must be brought by the participants. No exchanges of problem statements will be done
+													li In prototype presentation participants must arrive an hour before the start of the event to set their counter. Counters will be given in the basis of ‘first come first serve’.
+										.modal-footer
+											button.btn.btn-default(type='button', data-dismiss='modal') Close
 			.event_box#landcircuit
 				img(src='img/events/RcAllTerrian.jpg', alt='event')
 				.event_info
@@ -105,10 +155,27 @@ block body-pack
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Register
+							a(href='registrations/landcircuit')
+								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Rules
+							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#landcircuitModal") Rules
+							#landcircuitModal.modal.fade(role='dialog')
+								.modal-dialog
+									// Modal content
+									.modal-content
+										.modal-header
+											button.close(type='button', data-dismiss='modal') ×
+											h4.modal-title RC ALL TERRAIN
+										.modal-body
+												ul 
+													h5 RULES
+													li All TERRAIN RACE 
+													|RC vehicles must be self made. Store bought rc vehicles are not allowed.
+													li DRONE RACE
+													|The drones should have proper permission to participate. (if required)
+										.modal-footer
+											button.btn.btn-default(type='button', data-dismiss='modal') Close
 			.event_box#pubg
 				img(src='img/events/pubg.jpg', alt='event')
 				.event_info
@@ -126,10 +193,24 @@ block body-pack
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Register
+							a(href='registrations/pubg')
+								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Rules				
+							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#pubgModal") Rules
+							#pubgModal.modal.fade(role='dialog')
+								.modal-dialog
+									// Modal content
+									.modal-content
+										.modal-header
+											button.close(type='button', data-dismiss='modal') ×
+											h4.modal-title PUBG MOBILE TOURNAMENT
+										.modal-body
+												ul 
+													h5 RULES
+													li The game must be installed only through app store or play store. Any apk or hack versions will not be allowed.
+										.modal-footer
+											button.btn.btn-default(type='button', data-dismiss='modal') Close				
 			.event_box#adzap
 				img(src='img/events/Ad-Zap.jpg', alt='event')
 				.event_info
@@ -150,10 +231,25 @@ block body-pack
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Register
+							a(href='registrations/adzap')
+								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Rules
+							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#adzapModal") Rules
+							#adzapModal.modal.fade(role='dialog')
+								.modal-dialog
+									// Modal content
+									.modal-content
+										.modal-header
+											button.close(type='button', data-dismiss='modal') ×
+											h4.modal-title AD - ZAP
+										.modal-body
+												ul 
+													h5 RULES
+													li Usage of existing brand names and taglines are not permitted.
+													li The equal contribution of both teammates is compulsary.
+										.modal-footer
+											button.btn.btn-default(type='button', data-dismiss='modal') Close
 			.event_box#contrarian
 				img(src='img/events/Contrarian.jpg', alt='event')
 				.event_info
@@ -172,10 +268,26 @@ block body-pack
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Register
+							a(href='registrations/contrarian')
+								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Rules
+							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#contrarianModal") Rules
+							#contrarianModal.modal.fade(role='dialog')
+								.modal-dialog
+									// Modal content
+									.modal-content
+										.modal-header
+											button.close(type='button', data-dismiss='modal') ×
+											h4.modal-title CONTRARIAN
+										.modal-body
+												ul 
+													h5 RULES
+													li Questions must be answered rapidly in the given time.
+													li Only graded participants will be allowed to move to the next round.
+													li All participants must be familiar with stock marketing prior to the event.
+										.modal-footer
+											button.btn.btn-default(type='button', data-dismiss='modal') Close
 			.event_box#corporateroadies
 				img(src='img/events/CorporateRoadies.jpg', alt='event')
 				.event_info
@@ -201,10 +313,25 @@ block body-pack
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Register
+							a(href='registrations/roadies')
+								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Rules
+							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#roadiesModal") Rules
+							#roadiesModal.modal.fade(role='dialog')
+								.modal-dialog
+									// Modal content
+									.modal-content
+										.modal-header
+											button.close(type='button', data-dismiss='modal') ×
+											h4.modal-title CORPORATE ROADIES
+										.modal-body
+												ul 
+													h5 RULES
+													li Questions will only be given if the previous questions are answered.
+													li Questions must be answered in the given amount of time. Answering After the time elapses will result in deduction of points.
+										.modal-footer
+											button.btn.btn-default(type='button', data-dismiss='modal') Close
 			.event_box#espritdecorps
 				img(src='img/events/Espirt-De_Corps.jpg', alt='event')
 				.event_info
@@ -226,10 +353,25 @@ block body-pack
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Register
+							a(href='registrations/esprit')
+								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Rules
+							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#decorpsModal") Rules
+							#decorpsModal.modal.fade(role='dialog')
+								.modal-dialog
+									// Modal content
+									.modal-content
+										.modal-header
+											button.close(type='button', data-dismiss='modal') ×
+											h4.modal-title ESPRIT DE CORPS
+										.modal-body
+												ul 
+													h5 RULES
+													li Leader is not allowed to have any sort of contact with his team members.
+													li The participants have to pick up any product they touch.
+										.modal-footer
+											button.btn.btn-default(type='button', data-dismiss='modal') Close
 			.event_box#youngmanager
 				img(src='img/events/YoungManager.jpg', alt='event')
 				.event_info
@@ -258,10 +400,25 @@ block body-pack
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Register
+							a(href='registrations/manager')
+								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary Rules
+							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#managerModal") Rules
+							#managerModal.modal.fade(role='dialog')
+								.modal-dialog
+									// Modal content
+									.modal-content
+										.modal-header
+											button.close(type='button', data-dismiss='modal') ×
+											h4.modal-title YOUNG MANAGER
+										.modal-body
+												ul 
+													h5 RULES
+													li Participants must adhere to the given time constrain.
+													li The winner will be decided according to the number of questions answered by the remaining participants in the stress management round.
+										.modal-footer
+											button.btn.btn-default(type='button', data-dismiss='modal') Close
 	// Events Section End
 	
 	include ./mods/edm-passes

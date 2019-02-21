@@ -6,13 +6,14 @@ var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 var pug = require('pug');
 var path = require('path');
+var qrcode = require('qrcode');
 
 var transporter = nodemailer.createTransport({
 	service: 'gmail',
 	host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    requireTLS: true,
+	port: 587,
+	secure: false,
+	requireTLS: true,
 	auth: {
 		user: 'ivarna@klh.edu.in',
 		pass: 'Ivarna@123'
@@ -114,27 +115,33 @@ router.post('/response', function (req, res) {
 		EdmPass.update({ 'order_id': response.ORDERID }, { $set: { 'status': 'CONFIRMED' } }).exec();
 
 		EdmPass.findOne({ order_id: response.ORDERID }, function (err, doc) {
-			var locals = {
-				order_id: response.ORDERID,
-				amount: response.TXNAMOUNT,
-				date: response.TXNDATE,
-				payment_method: response.PAYMENTMODE,
-				numPasses: doc.numPasses
-			};
-			var email = doc.email;
-			var mailOptions = {
-				from: 'ivarna@klh.edu.in', // sender address
-				to: doc.email, // list of receivers
-				subject: 'Your EDM passes are confirmed!', // Subject line
-				html: pug.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
-			};
+			qrcode.toDataURL(response.ORDERID, function (err, qr) {
+				var qrcode = `<img src='${qr}'>`;
+				var locals = {
+					order_id: response.ORDERID,
+					amount: response.TXNAMOUNT,
+					date: response.TXNDATE,
+					payment_method: response.PAYMENTMODE,
+					quantity: doc.numPasses,
+					event_date: "March 16, 2019",
+					itemline: "EDM Passes",
+					headline: "Passes Confirmed",
+					qrcode: qrcode
+				};
+				var mailOptions = {
+					from: 'ivarna@klh.edu.in', // sender address
+					to: doc.email, // list of receivers
+					subject: 'Your EDM passes are confirmed!', // Subject line
+					html: pug.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
+				};
 
-			transporter.sendMail(mailOptions).then(function(value) {
-				console.log(value);
-			}).catch(function(reason) {
-				console.log(reason);
-			})
-			res.render('pay/receipt', locals);
+				transporter.sendMail(mailOptions).then(function (value) {
+					console.log(value);
+				}).catch(function (reason) {
+					console.log(reason);
+				})
+				res.render('pay/receipt', locals);
+			});
 		});
 
 	} else {
@@ -146,9 +153,14 @@ router.post('/response', function (req, res) {
 
 // Testing route
 router.get('/test', function (req, res) {
+	var order_id = "81e4d040-3482-11e9-9805-3d3aeedb140c";
+	run(res).catch(error => console.error(error.stack));
 
-	// EdmPass.update({ 'order_id': "81e4d040-3482-11e9-9805-3d3aeedb140c" }, { $set: { 'status': 'CONFIRMED' } }).exec();
-	// res.send("Your passes have been confirmed");
+	async function run(response) {
+		const res = await qrcode.toDataURL(order_id);
+		var tag = `<img src='${res}'>`;
+		response.send(tag);
+	}
 })
 
 module.exports = router;
