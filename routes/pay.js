@@ -114,12 +114,14 @@ router.post('/response', function (req, res) {
 		EdmPass.update({ 'order_id': response.ORDERID }, { $set: { 'status': 'CONFIRMED' } }).exec();
 
 		EdmPass.findOne({ order_id: response.ORDERID }, function (err, doc) {
+			var qr = await qrcode.toDataURL(order_id);
 			var locals = {
 				order_id: response.ORDERID,
 				amount: response.TXNAMOUNT,
 				date: response.TXNDATE,
 				payment_method: response.PAYMENTMODE,
-				numPasses: doc.numPasses
+				numPasses: doc.numPasses,
+				qrcode: `<img src='${qr}'>`
 			};
 			var email = doc.email;
 			var mailOptions = {
@@ -146,9 +148,19 @@ router.post('/response', function (req, res) {
 
 // Testing route
 router.get('/test', function (req, res) {
+	var order_id = "81e4d040-3482-11e9-9805-3d3aeedb140c";
+    //var dom = new jsdom.JSDOM();
+    //var howla = dom.window.document.createElement("div");
+    //howla.setAttribute('id', 'howla');
 
-	// EdmPass.update({ 'order_id': "81e4d040-3482-11e9-9805-3d3aeedb140c" }, { $set: { 'status': 'CONFIRMED' } }).exec();
-	// res.send("Your passes have been confirmed");
+
+    run(res).catch(error => console.error(error.stack));
+
+    async function run(response) {
+        const res = await qrcode.toDataURL(order_id);
+        var tag = `<img src='${res}'>`;
+        response.send(tag);
+    }
 })
 
 module.exports = router;
