@@ -67,12 +67,12 @@ var projectExpoSchema = new mongoose.Schema({
 });
 
 module.exports = {
-	HackathonModel: mongoose.model("HackathonModel", hackathonSchema, "hackathon"),
-	ExpoModel: mongoose.model("ExpoModel", projectExpoSchema, "expo"),
-	CounterStrikeModel: mongoose.model('CounterStrikeModel', csGameSchema, "counterStrike"),
-	PubgModel: mongoose.model('PubgModel', pubgSchema, 'pubg'),
-	DroneRaceModel: mongoose.model('DroneRaceModel', droneRaceSchema, 'droneRaces'),
-	LandCircuitModel: mongoose.model('LandCircuitModel', rcSportsSchema, 'landCircuitRaces'),
-	CodingCompetitionModel: mongoose.model('CodingCompetitionModel', codingCompetitionSchema, 'codingCompetition')
+	hackathon: mongoose.model("HackathonModel", hackathonSchema, "hackathon"),
+	landcircuit: mongoose.model("ExpoModel", projectExpoSchema, "expo"),
+	counterstrike: mongoose.model('CounterStrikeModel', csGameSchema, "counterStrike"),
+	pubg: mongoose.model('PubgModel', pubgSchema, 'pubg'),
+	drone: mongoose.model('DroneRaceModel', droneRaceSchema, 'droneRaces'),
+	landcircuit: mongoose.model('LandCircuitModel', rcSportsSchema, 'landCircuitRaces'),
+	coding: mongoose.model('CodingCompetitionModel', codingCompetitionSchema, 'codingCompetition')
 };
 

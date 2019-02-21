@@ -1,10 +1,13 @@
 module.exports = {
-    hackathon: 'Hackathon',
-    landCircuit: 'RC Land Circuit',
+    hackathon: {
+        title: 'Hackathon',
+        price: 300
+    },
+    landcircuit: 'RC Land Circuit',
     drone: 'Drone Races',
     coding: 'Coding Competition',
-    projectExpo: 'Project Expo',
-    counterStrike: 'Counter Strike 1.6',
+    expo: 'Project Expo',
+    counterstrike: 'Counter Strike 1.6',
     pubg: 'PUBG Mobile',
     adzap: 'Ad-Zap',
     contrarian: 'Contrarian',
