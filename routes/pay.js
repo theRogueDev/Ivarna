@@ -113,9 +113,9 @@ router.post('/response', function (req, res) {
 
 	if (response.RESPCODE == 1) {
 		EdmPass.update({ 'order_id': response.ORDERID }, { $set: { 'status': 'CONFIRMED' } }).exec();
-
+		
 		EdmPass.findOne({ order_id: response.ORDERID }, function (err, doc) {
-			qrcode.toDataURL(order_id, function(err, qr) {
+			qrcode.toDataURL(response.ORDERID, function(err, qr) {
 				var locals = {
 					order_id: response.ORDERID,
 					amount: response.TXNAMOUNT,
