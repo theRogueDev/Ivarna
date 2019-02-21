@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 var pug = require('pug');
 var path = require('path');
+var qrcode = require('qrcode');
 
 var transporter = nodemailer.createTransport({
 	service: 'gmail',
