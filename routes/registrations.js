@@ -65,7 +65,7 @@ router.post('/:event/register', function(req, res) {
 	params['ORDER_ID'] = transaction.order_id;
 	params['CUST_ID'] = data.email;
 	params['TXN_AMOUNT'] = event.price;
-	params['CALLBACK_URL'] = "https://ivarna.herokuapp.com/registrations" + event + "/response";
+	params['CALLBACK_URL'] = "https://ivarna.herokuapp.com/registrations" + event.id + "/response";
 	params['EMAIL'] = data.email;
 
 	Model.create(data, function (err, resp) {
