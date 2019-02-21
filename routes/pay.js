@@ -122,7 +122,10 @@ router.post('/response', function (req, res) {
 					amount: response.TXNAMOUNT,
 					date: response.TXNDATE,
 					payment_method: response.PAYMENTMODE,
-					numPasses: doc.numPasses,
+					quantity: doc.numPasses,
+					event_date: "March 16, 2019",
+					itemline: "EDM Passes",
+					headline: "Passes Confirmed",
 					qrcode: qrcode
 				};
 				var mailOptions = {

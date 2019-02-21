@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 
 var hackathonSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
 	teamName: String,
 	size: Number,
 	leaderName: String,
@@ -10,6 +12,8 @@ var hackathonSchema = new mongoose.Schema({
 });
 
 var codingCompetitionSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
 	teamName: String,
 	size: Number,
 	leaderName: String,
@@ -19,6 +23,8 @@ var codingCompetitionSchema = new mongoose.Schema({
 });
 
 var rcSportsSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
 	teamName: String,
 	size: Number,
 	leaderName: String,
@@ -28,6 +34,8 @@ var rcSportsSchema = new mongoose.Schema({
 });
 
 var droneRaceSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
 	teamName: String,
 	size: Number,
 	leaderName: String,
@@ -37,6 +45,8 @@ var droneRaceSchema = new mongoose.Schema({
 });
 
 var pubgSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
 	teamName: String,
 	size: Number,
 	leaderName: String,
@@ -46,6 +56,8 @@ var pubgSchema = new mongoose.Schema({
 });
 
 var csGameSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
 	teamName: String,
 	size: Number,
 	leaderName: String,
@@ -55,10 +67,9 @@ var csGameSchema = new mongoose.Schema({
 })
 
 var projectExpoSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
 	teamName: String,
-	projectTitle: String,
-	domain: String,
-	abstract: String,
 	size: Number,
 	leaderName: String,
 	email: String,

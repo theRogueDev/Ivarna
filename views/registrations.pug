@@ -1,0 +1,66 @@
+extends ./layout
+
+block head-pack
+	script(src="/js/registrations.js" type="text/javascript")
+
+block body-pack
+	br
+	br
+	br
+	br
+	br
+
+	.container
+		.row
+			.col-md-1
+			.col-md-10
+				h2.text-uppercase #{title}
+
+				form#fields(action="register" method="post")
+					.row
+						.col-md-4
+							.form-group
+								label(for="name") Team Name
+								input.form-control(type="text" name="name")
+						.col-md-4
+							.form-group
+								label(for="size") Team Size
+								input.form-control(type="number" name="size" min=requiredSize max=maxSize step=1 value=requiredSize)
+						.col-md-4
+							.form-group
+								label(for="university") University
+								input.form-control(type="text" name="university")
+					.row
+						.col-md-4
+							.form-group
+								label(for="contactName") Contact Name
+								input.form-control(type="text" name="contactName")
+						.col-md-4
+							.form-group
+								label(for="email") Contact Email
+								input.form-control(type="email" name="email")
+						.col-md-4
+							.form-group
+								label(for="phone") Phone
+								input.form-control(type="text" name="phone")
+
+					- for (var i = 1; i <= requiredSize; i++)
+						.form-group
+							label(for=`member-#{i}`) Member #{i} Full Name (REQUIRED)
+							input.form-control(type="text" name=`member-#{i}`)
+					
+					- for (var i = requiredSize + 1; i <= maxSize; i++)
+						.form-group
+							label(for=`member-#{i}`) Member #{i} Full Name (OPTIONAL)
+							input.form-control(type="text" name=`member-#{i}`)
+
+					.form-group
+						label(for="amount") Price (You will be redirected to checkout page)
+						input.form-control(type="number" readonly value=price)
+					
+					button.btn-rounded.btn.btn-primary(type="submit") Finish Registration
+					
+			.col-md-1
+
+	br
+	br

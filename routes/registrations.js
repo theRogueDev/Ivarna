@@ -8,12 +8,18 @@ var qrcode = require('qrcode');
 var uuidv1 = require('uuid/v1');
 
 router.get('/:event', function (req, res) {
-	var event = req.params.event;
+	var event = events[req.params.event];
 	console.log(event);
 	console.log(events);
 
-	if (event in events) {
-		res.render('registrations/' + events[event].id, { id: events[event].id, title: events[event].title });
+	if (event.id in events) {
+		res.render('registrations', { 
+			id: event.id,
+			title: event.title,
+			requiredSize: event.requiredSize,
+			maxSize: event.maxSize,
+			price: event.price
+		});
 	} else {
 		console.log("Event doesn't exist");
 		res.redirect('/events');
@@ -26,8 +32,8 @@ router.post('/:event/register', function(req, res) {
 	// Start the transaction based on the event
 
 	var data = req.body;
-	var event = req.params.event;
-	var Model = models[events[event].id];
+	var event = events[req.params.event];
+	var Model = models[event.id];
 	var membersList = [];
 	var transaction = {};
 
@@ -42,8 +48,9 @@ router.post('/:event/register', function(req, res) {
 	transaction.teamName = data.name.replace(' ', '');
 	transaction.size = data.size;
 	transaction.email = data.email;
-	transaction.leaderName = events[event].price;
-	transaction.university = "PENDING";
+	transaction.leaderName = data.contactName;
+	transaction.university = data.university;
+	transaction.status = "PENDING";
 	transaction.order_id = uuidv1();
 	transaction.members = membersList;
 
@@ -56,10 +63,10 @@ router.post('/:event/register', function(req, res) {
 	params['CHANNEL_ID'] = "WEB";
 	params['INDUSTRY_TYPE_ID'] = "Retail";
 	params['ORDER_ID'] = transaction.order_id;
-	params['CUST_ID'] = "akasireddy99@gmail.com";
-	params['TXN_AMOUNT'] = 5;
+	params['CUST_ID'] = data.email;
+	params['TXN_AMOUNT'] = event.price;
 	params['CALLBACK_URL'] = "https://ivarna.herokuapp.com/registrations" + event + "/response";
-	params['EMAIL'] = "akasireddy99@gmail.com";
+	params['EMAIL'] = data.email;
 
 	Model.create(data, function (err, resp) {
 		if (err) {
