@@ -1,10 +1,9 @@
 extends ../layout
 
 block head-pack
-
+	script(src="/js/registrations.js" type="text/javascript")
 
 block body-pack
-
 	br
 	br
 	br
@@ -15,7 +14,7 @@ block body-pack
 		.row
 			.col-md-1
 			.col-md-10
-				h2.text-uppercase young manager
+				h2.text-uppercase #{title}
 
 				form(action="#" method="post")
 					.row

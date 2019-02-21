@@ -116,13 +116,14 @@ router.post('/response', function (req, res) {
 		
 		EdmPass.findOne({ order_id: response.ORDERID }, function (err, doc) {
 			qrcode.toDataURL(response.ORDERID, function(err, qr) {
+				var qrcode = `<img src='${qr}'>`; 
 				var locals = {
 					order_id: response.ORDERID,
 					amount: response.TXNAMOUNT,
 					date: response.TXNDATE,
 					payment_method: response.PAYMENTMODE,
 					numPasses: doc.numPasses,
-					qrcode: `<img src='${qr}'>`
+					qrcode: qrcode
 				};
 				var email = doc.email;
 				var mailOptions = {

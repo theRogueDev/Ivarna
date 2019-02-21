@@ -6,7 +6,7 @@ var hackathonSchema = new mongoose.Schema({
 	leaderName: String,
 	email: String,
 	university: String,
-	members: [{ firstName: String, lastName: String }]
+	members: [ String ]
 });
 
 var codingCompetitionSchema = new mongoose.Schema({
@@ -15,7 +15,7 @@ var codingCompetitionSchema = new mongoose.Schema({
 	leaderName: String,
 	email: String,
 	university: String,
-	members: [{ firstName: String, lastName: String }]
+	members: [ String ]
 });
 
 var rcSportsSchema = new mongoose.Schema({
@@ -24,7 +24,7 @@ var rcSportsSchema = new mongoose.Schema({
 	leaderName: String,
 	email: String,
 	phone: String,
-	members: [{ firstName: String, lastName: String }]
+	members: [ String ]
 });
 
 var droneRaceSchema = new mongoose.Schema({
@@ -33,7 +33,7 @@ var droneRaceSchema = new mongoose.Schema({
 	leaderName: String,
 	email: String,
 	phone: String,
-	members: [{ firstName: String, lastName: String }]
+	members: [ String ]
 });
 
 var pubgSchema = new mongoose.Schema({
@@ -42,7 +42,7 @@ var pubgSchema = new mongoose.Schema({
 	leaderName: String,
 	email: String,
 	phone: String,
-	members: [{ firstName: String, lastName: String }]
+	members: [ String ]
 });
 
 var csGameSchema = new mongoose.Schema({
@@ -51,7 +51,7 @@ var csGameSchema = new mongoose.Schema({
 	leaderName: String,
 	email: String,
 	phone: String,
-	members: [{ firstName: String, lastName: String }]
+	members: [ String ]
 })
 
 var projectExpoSchema = new mongoose.Schema({
@@ -63,7 +63,7 @@ var projectExpoSchema = new mongoose.Schema({
 	leaderName: String,
 	email: String,
 	phone: String,
-	members: [{ firstName: String, lastName: String }]
+	members: [ String ]
 });
 
 module.exports = {
