@@ -64,17 +64,22 @@ function validatePreEntries() {
 	console.log(emailProvider);
 	if (phoneLength !== 10) {
 		proper = false;
-		$("#phoneInput").after("<div class=\"alert alert-danger\">Make sure phone number is correct (No country code needed)</div>");
+		$("#phoneInput").addClass('is-invalid');
 	}
 	if (emailProvider.length !== 2 || !emailProvider[1].includes(".") || emailProvider[1].split(".").length !== 2) {
 		proper = false;
-		$("emailInput").after("<div class=\"alert alert-danger\">Make sure email address is properly entered</div>");
+		$("#emailInput").addClass('is-invalid');
 	}
 	return proper;
 }
 
 function lockFinalFields(numPasses) {
-	var amount = numPasses * 800;
+	var amount;
+	if ($("#passTypeInput").val() === "vip") {
+		amount = numPasses * 800;
+	} else {
+		amount = numPasses * 500;
+	}
 
 	$("#fields input").attr("readonly", "true");
 	$("#numPassesSelect").attr("readonly", "true");
