@@ -75,7 +75,7 @@ function validatePreEntries() {
 
 function lockFinalFields(numPasses) {
 	var amount;
-	if ($("#passTypeInput").val() === "vip") {
+	if ($("#passType").val() === "vip") {
 		amount = numPasses * 800;
 	} else {
 		amount = numPasses * 500;
