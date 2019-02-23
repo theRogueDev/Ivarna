@@ -31,6 +31,7 @@ $(document).ready(function () {
 			formData[fields[i].name] = fields[i].value;
 		}
 		formData['numPasses'] = $("#numPassesSelect").val();
+		formData['passType'] = $("#passTypeInput").val();
 
 		console.log(formData);
 		
@@ -75,7 +76,7 @@ function validatePreEntries() {
 
 function lockFinalFields(numPasses) {
 	var amount;
-	if ($("#passType").val() === "vip") {
+	if ($("#passTypeInput").val() === "vip") {
 		amount = numPasses * 800;
 	} else {
 		amount = numPasses * 500;
