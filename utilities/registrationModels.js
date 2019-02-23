@@ -77,13 +77,72 @@ var projectExpoSchema = new mongoose.Schema({
 	members: [ String ]
 });
 
+var adZapSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
+	teamName: String,
+	size: Number,
+	leaderName: String,
+	email: String,
+	phone: String,
+	members: [ String ]
+});
+
+var managerSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
+	teamName: String,
+	size: Number,
+	leaderName: String,
+	email: String,
+	phone: String,
+	members: [ String ]
+});
+
+var roadiesSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
+	teamName: String,
+	size: Number,
+	leaderName: String,
+	email: String,
+	phone: String,
+	members: [ String ]
+});
+
+var espritSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
+	teamName: String,
+	size: Number,
+	leaderName: String,
+	email: String,
+	phone: String,
+	members: [ String ]
+});
+var contrarianSchema = new mongoose.Schema({
+	status: String,
+	order_id: String,
+	teamName: String,
+	size: Number,
+	leaderName: String,
+	email: String,
+	phone: String,
+	members: [ String ]
+});
+
 module.exports = {
 	hackathon: mongoose.model("HackathonModel", hackathonSchema, "hackathon"),
-	landcircuit: mongoose.model("ExpoModel", projectExpoSchema, "expo"),
+	expo: mongoose.model("ExpoModel", projectExpoSchema, "expo"),
 	counterstrike: mongoose.model('CounterStrikeModel', csGameSchema, "counterStrike"),
 	pubg: mongoose.model('PubgModel', pubgSchema, 'pubg'),
 	drone: mongoose.model('DroneRaceModel', droneRaceSchema, 'droneRaces'),
 	landcircuit: mongoose.model('LandCircuitModel', rcSportsSchema, 'landCircuitRaces'),
-	coding: mongoose.model('CodingCompetitionModel', codingCompetitionSchema, 'codingCompetition')
+	coding: mongoose.model('CodingCompetitionModel', codingCompetitionSchema, 'codingCompetition'),
+	adzap: mongoose.model('AdZapModel', adZapSchema, 'adZap'),
+	contrarian: mongoose.model('ContrarianModel', contrarianSchema, 'contrarians'),
+	roadies: mongoose.model('RoadiesModel', roadiesSchema, 'roadies'),
+	manager: mongoose.model('ManagerModel', managerSchema, 'managers'),
+	esprit: mongoose.model('EspritModel', espritSchema, 'esprit')
 };
 

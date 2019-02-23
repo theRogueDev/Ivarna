@@ -13,7 +13,11 @@ var app = express();
 
 // DB connection
 // mongoose.connect("mongodb+srv://arbiter:Kpragat21@laniakea-pzo4s.mongodb.net/registrations?retryWrites=true", { useNewUrlParser: true });
-mongoose.connect("mongodb://arbiter:Kpragat21@ds343985.mlab.com:43985/heroku_pv35txsp", { useNewUrlParser: true });
+mongoose.connect("mongodb://pass_handler:Ivarna2019@ds149215-a0.mlab.com:49215,ds149215-a1.mlab.com:49215/heroku_zn55qrq5?replicaSet=rs-ds149215", { useNewUrlParser: true }).then(function(value){
+	console.log("Connected to mLab successfully");
+}).catch(function(reason){
+	console.log(reason);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

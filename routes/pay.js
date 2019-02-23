@@ -27,6 +27,7 @@ var edmSchema = new mongoose.Schema({
 	phone: Number,
 	amount: Number,
 	numPasses: Number,
+	passType: String,
 	passes: [{ firstName: String, lastName: String }],
 	status: String
 });
@@ -44,6 +45,13 @@ router.post('/checkout', function (req, res) {
 	var transaction = {};
 	var names = [];
 	var name = {};
+	var amount;
+
+	if (data.passType == 'vip') {
+		amount = data.numPasses * 800;
+	} else {
+		amount = data.numPasses * 500;
+	}
 
 	for (var key in data) {
 		if (key.includes('firstName-')) {
@@ -58,11 +66,11 @@ router.post('/checkout', function (req, res) {
 	transaction.name = data.firstName.replace(' ', '') + ' ' + data.lastName.replace(' ', '');
 	transaction.phone = data.phone;
 	transaction.email = data.email;
-	transaction.amount = data.numPasses * 800;
+	transaction.passType = data.passType;
+	transaction.amount = amount;
 	transaction.status = "PENDING";
 	transaction.order_id = uuidv1();
 	transaction.numPasses = data.numPasses;
-	transaction.type = "VIP";
 	transaction.passes = names;
 
 	EdmPass.create(transaction, function (err, resp) {
@@ -89,7 +97,7 @@ router.post('/checkout', function (req, res) {
 	params['INDUSTRY_TYPE_ID'] = "Retail";
 	params['ORDER_ID'] = transaction.order_id;
 	params['CUST_ID'] = data.email;
-	params['TXN_AMOUNT'] = data.numPasses;
+	params['TXN_AMOUNT'] = transaction.amount;
 	params['CALLBACK_URL'] = "https://ivarna.herokuapp.com/pay/response";
 	params['EMAIL'] = data.email;
 	params['MOBILE_NO'] = data.phone;
