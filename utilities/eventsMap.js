@@ -2,10 +2,10 @@ module.exports = {
     hackathon: {
         id: "hackathon",
         title: 'Hackathon',
-        price: 200,
+        price: 250,
         date: "March 15 & 16, 2019",
         requiredSize: 3,
-        maxSize: 5
+		maxSize: 5
     },
     landcircuit: {
         id: "landcircuit",
@@ -42,7 +42,7 @@ module.exports = {
     counterstrike: {
         id: 'counterstrike',
         title: 'Counter Strike 1.6',
-        price: 150,
+        price: 250,
         date: "March 15 & 16, 2019",
         requiredSize: 1,
         maxSize: 1
@@ -50,7 +50,7 @@ module.exports = {
     pubg: {
         id: 'pubg',
         title: 'PUBG Mobile',
-        price: 150,
+        price: 250,
         date: "March 15 & 16, 2019",
         requiredSize: 2,
         maxSize: 4

@@ -44,6 +44,19 @@ block body-pack
 								label(for="phone") Phone
 								input#phoneInput.form-control(type="text" name="phone")
 
+					- if (id == 'expo')
+						.form-group
+							label(for='projectTitle') Project Title
+							input#projectTitleInput.form-control(type='text' name='projectTitle')
+					
+					- if (id == 'hackathon' || id == 'expo')
+						h4 Abstract
+						.form-group
+							label(for='abstract') Minimum length is 300 characters
+							textarea#abstractInput.form-control(name='abstract' maxlength=3000 minlength=300 spellcheck)
+					
+					h4 Members
+
 					span#required
 						- for (var i = 1; i <= requiredSize; i++)
 							- var member = "member-" + i;

@@ -8,7 +8,8 @@ var hackathonSchema = new mongoose.Schema({
 	leaderName: String,
 	email: String,
 	university: String,
-	members: [ String ]
+	members: [ String ],
+	abstract: String
 });
 
 var codingCompetitionSchema = new mongoose.Schema({
@@ -74,7 +75,9 @@ var projectExpoSchema = new mongoose.Schema({
 	leaderName: String,
 	email: String,
 	phone: String,
-	members: [ String ]
+	members: [ String ],
+	abstract: String,
+	projectTitle: String
 });
 
 var adZapSchema = new mongoose.Schema({
@@ -91,12 +94,9 @@ var adZapSchema = new mongoose.Schema({
 var managerSchema = new mongoose.Schema({
 	status: String,
 	order_id: String,
-	teamName: String,
-	size: Number,
-	leaderName: String,
+	name: String,
 	email: String,
 	phone: String,
-	members: [ String ]
 });
 
 var roadiesSchema = new mongoose.Schema({

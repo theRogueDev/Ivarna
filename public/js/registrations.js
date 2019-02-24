@@ -10,6 +10,7 @@ $(document).ready(function () {
 			for (var i = 0; i < fields.length; i++) {
 				formData[fields[i].name] = fields[i].value;
 			}
+			formData['abstract'] = $("#abstractInput").val();
 	
 			console.log(formData);
 			var splits = $(location).attr('href').split('/');
@@ -81,6 +82,28 @@ function validated() {
 		return false;
 	} else {
 		$("#contactNameInput").removeClass('is-invalid');
+	}
+
+	if ($("#projectTitleInput") != 0) {
+		// exists
+		if ($("#projectTitleInput").val() == 0) {
+			// length is 0
+			$("#projectTitleInput").addClass('is-invalid');
+			return false;
+		} else {
+			$("#projectTitleInput").removeClass('is-invalid');
+		}
+	}
+
+	if ($("#abstractInput") != 0) {
+		// exists
+		if ($("#abstractInput").val() == 0) {
+			// length is 0
+			$("#abstractInput").addClass('is-invalid');
+			return false;
+		} else {
+			$("#abstractInput").removeClass('is-invalid');
+		}
 	}
 
 	return true;
