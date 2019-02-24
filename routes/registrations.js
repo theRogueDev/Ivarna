@@ -10,7 +10,6 @@ var pug = require('pug');
 var path = require('path');
 var nodemailer = require('nodemailer');
 
-
 var transporter = nodemailer.createTransport({
 	service: 'gmail',
 	host: 'smtp.gmail.com',
@@ -93,7 +92,7 @@ router.post('/:event/register', function (req, res) {
 	params['CALLBACK_URL'] = "https://ivarna.klh.edu.in/registrations/" + event.id + "/response";
 	params['EMAIL'] = data.email;
 
-	Model.create(data, function (err, resp) {
+	Model.create(transaction, function (err, resp) {
 		if (err) {
 			console.log(err);
 		} else {
