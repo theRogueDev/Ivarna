@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var enforce = require('express-sslify');
+var models = require('./utilities/registrationModels');
 
 var indexRouter = require('./routes/index');
 var payRouter = require('./routes/pay');

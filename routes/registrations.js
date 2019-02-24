@@ -6,6 +6,7 @@ var events = require('../utilities/eventsMap');
 var checksum = require('../checksum/checksum');
 var qrcode = require('qrcode');
 var uuidv1 = require('uuid/v1');
+var pug = require('pug');
 
 router.get('/:event', function (req, res) {
 	var event = events[req.params.event];
@@ -74,7 +75,7 @@ router.post('/:event/register', function(req, res) {
 	params['ORDER_ID'] = transaction.order_id;
 	params['CUST_ID'] = data.email;
 	params['TXN_AMOUNT'] = event.price;
-	params['CALLBACK_URL'] = "https://ivarna.herokuapp.com/registrations/" + event.id + "/response";
+	params['CALLBACK_URL'] = "https://ivarna.klh.edu.in/registrations/" + event.id + "/response";
 	params['EMAIL'] = data.email;
 
 	Model.create(data, function (err, resp) {
@@ -118,7 +119,7 @@ router.post('/:event/response', function(req, res) {
 					from: 'ivarna@klh.edu.in',
 					to: doc.email,
 					subject: 'Your registration is complete for ' + events[event].title,
-					html: PushManager.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
+					html: pug.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
 				};
 	
 				transporter.sendMail(mailOptions).then(function (value) {
