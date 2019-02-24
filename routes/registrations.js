@@ -7,6 +7,21 @@ var checksum = require('../checksum/checksum');
 var qrcode = require('qrcode');
 var uuidv1 = require('uuid/v1');
 var pug = require('pug');
+var path = require('path');
+var nodemailer = require('nodemailer');
+
+
+var transporter = nodemailer.createTransport({
+	service: 'gmail',
+	host: 'smtp.gmail.com',
+	port: 587,
+	secure: false,
+	requireTLS: true,
+	auth: {
+		user: 'ivarna@klh.edu.in',
+		pass: 'Ivarna@123'
+	}
+});
 
 router.get('/:event', function (req, res) {
 	var event = events[req.params.event];
@@ -14,7 +29,7 @@ router.get('/:event', function (req, res) {
 	console.log(events);
 
 	if (event.id in events) {
-		res.render('registrations', { 
+		res.render('registrations', {
 			id: event.id,
 			title: event.title,
 			requiredSize: event.requiredSize,
@@ -28,7 +43,7 @@ router.get('/:event', function (req, res) {
 
 });
 
-router.post('/:event/register', function(req, res) {
+router.post('/:event/register', function (req, res) {
 
 	// Start the transaction based on the event
 
@@ -45,7 +60,7 @@ router.post('/:event/register', function(req, res) {
 	}
 
 	// Create transaction packet for logging in Mongo
-	
+
 	transaction.teamName = data.name.replace(' ', '');
 	transaction.size = data.size;
 	transaction.email = data.email;
@@ -54,11 +69,11 @@ router.post('/:event/register', function(req, res) {
 	transaction.status = "PENDING";
 	transaction.order_id = uuidv1();
 	transaction.members = membersList;
-	
+
 	if (event.id == 'expo') {
 		transaction.projectTitle = data.projectTitle;
 	}
-	
+
 	if (event.id == 'hackathon' || event.id == 'expo') {
 		transaction.abstract = data.abstract;
 	}
@@ -86,21 +101,25 @@ router.post('/:event/register', function(req, res) {
 		}
 	});
 
-	checksum.genchecksum(params, key, function(err, checksum) {
+	checksum.genchecksum(params, key, function (err, checksum) {
 		if (err) console.log(err);
 		params['CHECKSUMHASH'] = checksum;
 		res.send(JSON.stringify(params));
 	})
 });
 
-router.post('/:event/response', function(req, res) {
+router.post('/:event/response', function (req, res) {
 	var event = req.params.event;
 	var response = req.body;
 	var Model = models[event];
 
+	console.log(Model);
+	console.log(response);
+	console.log(event);
+
 	if (response.RESPCODE == 1) {
-		Model.findOne({order_id: response.ORDERID}, function (err, doc) {
-			qrcode.toDataURL({ 'order_id': response.ORDERID }, function(err, qr) {
+		Model.findOne({ order_id: response.ORDERID }, function (err, doc) {
+			qrcode.toDataURL({ 'order_id': response.ORDERID }, function (err, qr) {
 				var qrcode = `<img src='${qr}'>`;
 				var locals = {
 					order_id: response.ORDERID,
@@ -114,20 +133,19 @@ router.post('/:event/response', function(req, res) {
 					headline: "Registration Confirmed",
 					title: "Ivarna | " + events[event].title + " Registration Confirmed"
 				};
-				var email = doc.email;
 				var mailOptions = {
 					from: 'ivarna@klh.edu.in',
 					to: doc.email,
 					subject: 'Your registration is complete for ' + events[event].title,
 					html: pug.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
 				};
-	
+
 				transporter.sendMail(mailOptions).then(function (value) {
 					console.log(value);
 				}).catch(function (reason) {
 					console.log(reason);
 				});
-	
+
 				res.render('pay/receipt', locals);
 			});
 		});
