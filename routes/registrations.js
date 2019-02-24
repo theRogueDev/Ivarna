@@ -119,6 +119,7 @@ router.post('/:event/response', function (req, res) {
 	if (response.RESPCODE == 1) {
 		Model.findOne({ order_id: response.ORDERID }, function (err, doc) {
 			qrcode.toDataURL({ 'order_id': response.ORDERID }, function (err, qr) {
+				if (err) console.log(err);
 				var qrcode = `<img src='${qr}'>`;
 				var locals = {
 					order_id: response.ORDERID,
@@ -149,7 +150,7 @@ router.post('/:event/response', function (req, res) {
 			});
 		});
 	} else {
-		res.send("Payment failed");
+		res.send("Transaction was unable to complete");
 	}
 
 });

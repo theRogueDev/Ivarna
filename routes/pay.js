@@ -136,7 +136,8 @@ router.post('/response', function (req, res) {
 					event_date: "March 16, 2019",
 					itemline: "EDM Passes",
 					headline: "Passes Confirmed",
-					qrcode: qrcode
+					qrcode: qrcode,
+					title: "Ivarna | EDM Passes Confirmed"
 				};
 				var mailOptions = {
 					from: 'ivarna@klh.edu.in', // sender address
