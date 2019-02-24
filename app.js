@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var enforce = require('express-sslify');
 
 var indexRouter = require('./routes/index');
 var payRouter = require('./routes/pay');
@@ -11,11 +12,13 @@ var registrationsRouter = require('./routes/registrations');
 
 var app = express();
 
+// Enforce SSL 
+// app.use(enforce.HTTPS({ trustProtoHeader: true }));
+
 // DB connection
-// mongoose.connect("mongodb+srv://arbiter:Kpragat21@laniakea-pzo4s.mongodb.net/registrations?retryWrites=true", { useNewUrlParser: true });
-mongoose.connect("mongodb://pass_handler:Ivarna2019@ds149215-a0.mlab.com:49215,ds149215-a1.mlab.com:49215/heroku_zn55qrq5?replicaSet=rs-ds149215", { useNewUrlParser: true }).then(function(value){
+mongoose.connect("mongodb://pass_handler:Ivarna2019@ds149215-a0.mlab.com:49215,ds149215-a1.mlab.com:49215/heroku_zn55qrq5?replicaSet=rs-ds149215", { useNewUrlParser: true }).then(function (value) {
 	console.log("Connected to mLab successfully");
-}).catch(function(reason){
+}).catch(function (reason) {
 	console.log(reason);
 });
 

@@ -53,6 +53,15 @@ router.post('/:event/register', function(req, res) {
 	transaction.status = "PENDING";
 	transaction.order_id = uuidv1();
 	transaction.members = membersList;
+	
+	if (event.id == 'expo') {
+		transaction.projectTitle = data.projectTitle;
+	}
+	
+	if (event.id == 'hackathon' || event.id == 'expo') {
+		transaction.abstract = data.abstract;
+	}
+
 
 	// Create params for gateway
 
@@ -88,38 +97,43 @@ router.post('/:event/response', function(req, res) {
 	var response = req.body;
 	var Model = models[event];
 
-	Model.findOne({order_id: response.ORDERID}, function (err, doc) {
-		qrcode.toDataURL({ 'order_id': response.ORDERID }, function(err, qr) {
-			var qrcode = `<img src='${qr}'>`;
-			var locals = {
-				order_id: response.ORDERID,
-				amount: response.TXNAMOUNT,
-				date: response.TXNDATE,
-				payment_method: response.PAYMENTMODE,
-				quantity: doc.size,
-				qrcode: qrcode,
-				event_date: events[event].date,
-				itemline: events[event].title + " Registration",
-				headline: "Registration Confirmed",
-				title: "Ivarna | " + events[event].title + " Registration Confirmed"
-			};
-			var email = doc.email;
-			var mailOptions = {
-				from: 'ivarna@klh.edu.in',
-				to: doc.email,
-				subject: 'Your registration is complete for ' + events[event].title,
-				html: PushManager.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
-			};
-
-			transporter.sendMail(mailOptions).then(function (value) {
-				console.log(value);
-			}).catch(function (reason) {
-				console.log(reason);
+	if (response.RESPCODE == 1) {
+		Model.findOne({order_id: response.ORDERID}, function (err, doc) {
+			qrcode.toDataURL({ 'order_id': response.ORDERID }, function(err, qr) {
+				var qrcode = `<img src='${qr}'>`;
+				var locals = {
+					order_id: response.ORDERID,
+					amount: response.TXNAMOUNT,
+					date: response.TXNDATE,
+					payment_method: response.PAYMENTMODE,
+					quantity: doc.size,
+					qrcode: qrcode,
+					event_date: events[event].date,
+					itemline: events[event].title + " Registration",
+					headline: "Registration Confirmed",
+					title: "Ivarna | " + events[event].title + " Registration Confirmed"
+				};
+				var email = doc.email;
+				var mailOptions = {
+					from: 'ivarna@klh.edu.in',
+					to: doc.email,
+					subject: 'Your registration is complete for ' + events[event].title,
+					html: PushManager.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
+				};
+	
+				transporter.sendMail(mailOptions).then(function (value) {
+					console.log(value);
+				}).catch(function (reason) {
+					console.log(reason);
+				});
+	
+				res.render('pay/receipt', locals);
 			});
-
-			res.render('pay/receipt', locals);
 		});
-	});
+	} else {
+		res.send("Payment failed");
+	}
+
 });
 
 module.exports = router;
