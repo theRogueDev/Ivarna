@@ -1,6 +1,14 @@
 doctype html
 html  
 	head
+		// Global site tag (gtag.js) - Google Analytics
+		script(async="" src="https://www.googletagmanager.com/gtag/js?id=UA-135014104-1")
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-135014104-1');
+
 		// ========== Meta Tags ==========
 		meta(charset='UTF-8')
 		meta(name='description', content='IVARNA KLH TECH FEST')
@@ -32,18 +40,6 @@ html
 		script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js", integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM", crossorigin="anonymous")
 		script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js", integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o", crossorigin="anonymous")
 		script(src='/js/waypoints.min.js')
-		// slick carousel
-		script(src='/js/owl.carousel.min.js')
-		// parallax
-		script(src='/js/parallax.min.js')
-		// Counter up
-		script(src='/js/jquery.counterup.min.js')
-		// Counter down
-		script(src='/js/jquery.countdown.min.js')
-		// WOW JS
-		script(src='/js/wow.min.js')
-		// Custom js
-		script(src='/js/main.js')
 
 		block head-pack
 
@@ -70,4 +66,16 @@ html
 		//- 	}
 		//- script(src="https://widget.flowxo.com/embed.js" data-fxo-widget="eyJ0aGVtZSI6IiMzNTE4NTkiLCJ3ZWIiOnsiYm90SWQiOiI1YzUzZTAzNWVlZTIxYjAwNWMxNDVmOGQiLCJ0aGVtZSI6IiMzNTE4NTkiLCJsYWJlbCI6IkNoYXQgd2l0aCB1cyJ9fQ==" async="" defer="")
 		
+		// slick carousel
+		script(src='/js/owl.carousel.min.js')
+		// parallax
+		script(src='/js/parallax.min.js')
+		// Counter up
+		script(src='/js/jquery.counterup.min.js')
+		// Counter down
+		script(src='/js/jquery.countdown.min.js')
+		// WOW JS
+		script(src='/js/wow.min.js')
+		// Custom js
+		script(src='/js/main.js')
 		block extra-scripts

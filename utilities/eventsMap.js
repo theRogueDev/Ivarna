@@ -10,7 +10,7 @@ module.exports = {
     landcircuit: {
         id: "landcircuit",
         title: "Land Circuit",
-        price: 300,
+        price: 150,
         date: "March 15, 2019",
         requiredSize: 2,
         maxSize: 3
@@ -18,7 +18,7 @@ module.exports = {
     drone: {
         id: "drone",
         title: "Drone Races",
-        price: 300,
+        price: 150,
         date: "March 16, 2019",
         requiredSize: 1,
         maxSize: 3
@@ -50,7 +50,7 @@ module.exports = {
     pubg: {
         id: 'pubg',
         title: 'PUBG Mobile',
-        price: 250,
+        price: 100,
         date: "March 15 & 16, 2019",
         requiredSize: 2,
         maxSize: 4
