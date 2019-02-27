@@ -16,19 +16,33 @@ block body-pack
 	// Events Section
 	section.pt100.pb100
 		.container
-			.event_box#hackathon
-				img(src='img/events/Event1.jpeg', alt='event')
-				.event_info
-					.event_title
-						| Hackathon
-					.speakers
-						strong Timings
-						span  24 HOUR
-					.event_date
-				.event_word
+			for event in events
+				.event_box(id=event.id)
+					-var img = 'img/events/' + event.imgPath;
+					img(src=img, alt='event')
+					.event_info
+						.event_title
+							| #{event.title}
+						.event_subtitle
+							strong Date & Time
+							span  #{event.datetime}
+						if (event.rounds != undefined)
+							br
+							.event_subheading
+								h5 Rounds:
+								h6
+									ul
+										for round in event.rounds
+											li #{round}
 					.row.justify-content-center
-						.col-md-6.col-12 A hackathon is a community event, where people get together to work towards a common goal, usually involving computer programming or technology development.
-						.col-md-6.col-12 Think of it as a modern day barn raising, where the collective energy of community members is harnessed into action.
+						.col-md-6.col-12 
+							if (event.subhead != undefined) 
+								h6 #{event.subhead}
+							| #{event.leftBlock}
+						.col-md-6.col-12 
+							if (event.subhead != undefined)
+								br
+							| #{event.rightBlock}
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
@@ -36,455 +50,21 @@ block body-pack
 								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#hackathonModal") Rules
-							#hackathonModal.modal.fade(role='dialog')
+							- var modalId = event.id + "Modal";
+							- var dataTarget = '#' + modalId;
+							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target=dataTarget) Rules
+							.modal.fade(role='dialog' id=modalId)
 								.modal-dialog
 									// Modal content
 									.modal-content
 										.modal-header
 											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title HACKATHON
+											h4.modal-title #{event.title}
 										.modal-body
 												ul 
 													h5 RULES
-													li All components required must be brought by the participants.
-													li Computers will be provided by the university provided prior information is given.
-													li Participants should not bring pre-made prototypes or programs, if found the team will immediately be disqualified.
-													li Damaging any equipment will result in a hefty fine.
-													li Given participant ID card must be worn at all times till the adjournment of the competition.
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal') Close
-
-
-			.event_box#coding
-				img(src='img/events/Coding.jpg', alt='event')
-				.event_info
-					.event_title
-						| Coding
-					.speakers
-						strong Duration 
-						span 3 Hours
-					.event_date
-				.event_word
-					.row.justify-content-center
-						.col-md-6.col-12 The contest is open to anyone with a knack for programming. It is a team contest with each team having a maximum of two members from the same institution. Teams will be ranked as per the number of problems solved. Ties will be broken by the total time for each user in ascending order of time.
-							| Total time is the sum of the time consumed for each problem solved.  The time consumed for a solved problem is the time elapsed from the beginning of 
-						.col-md-6.col-12
-							|the contest to the submission of the first accepted run plus 20 penalty minutes for every previously rejected run 
-							|for that problem (Wrong answer, Time limit exceeded, Runtime Error, Compilation Error). 
-							|There is no time consumed for a problem that is not solved.
-							| The contest will consist of multiple rounds, with teams progressing in every round.
-					br
-					.row.justify-content-center
-						.col-md-5.col-md-12.col-lg-2
-							a(href='registrations/coding')
-								button.btn.btn-rounded.btn-block.btn-primary Register
-						.col-md-4
-						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#codingModal") Rules
-							#codingModal.modal.fade(role='dialog')
-								.modal-dialog
-									// Modal content
-									.modal-content
-										.modal-header
-											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title CODING
-										.modal-body
-												ul 
-													h5 RULES
-													li It is advisable for the participants to bring their own laptops for the competition.
-													li Installation of required software must be completed before the event starts.
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal') Close
-			.event_box#projectexpo
-				img(src='img/events/ProjectExpo.jpg', alt='event')
-				.event_info
-					.event_title
-						| Project Expo
-					.event_date
-				.event_word
-					.row.justify-content-center
-						.col-md-6.col-12 Project Expo is an organized presentation and display of models/working projects competition.
-							| It is the idea of sharing knowledge. It is also an endeavour to foster and enhance the culture of scientific inquiry 
-							|and its relevance in real world applications and underline the strong connection among student community.
-
-						.col-md-6.col-12 This Project Expo will motivate the students to a whole new level as they demonstrate their projects to other students, representatives from Institutes etc. getting their views, reviews & appreciations.
-					br
-					.row.justify-content-center
-						.col-md-5.col-md-12.col-lg-2
-							a(href='registrations/expo')
-								button.btn.btn-rounded.btn-block.btn-primary Register
-						.col-md-4
-						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#expoModal") Rules
-							#expoModal.modal.fade(role='dialog')
-								.modal-dialog
-									// Modal content
-									.modal-content
-										.modal-header
-											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title PROJECT EXPO
-										.modal-body
-												ul 
-													h5 RULES
-													li In paper presentation abstracts should be made presentable for the competition. The idea with futuristic implementation plan is compulsary.
-													li In poster presentation all materials required must be brought by the participants. No exchanges of problem statements will be done
-													li In prototype presentation participants must arrive an hour before the start of the event to set their counter. Counters will be given in the basis of ‘first come first serve’.
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal') Close
-				.event_box#drone
-				img(src='img/events/DroneRacing.jpg', alt='event')
-				.event_info
-					.event_title
-						| Drone Race
-					.event_date
-				.event_word
-					.row.justify-content-center
-						.col-md-6.col-12  Racing drone is a small quadcopter unmanned aerial vehicle (UAV) that is purpose-built to compete in FPV (first person view) 
-							|racing events held in most major cities around the world. 
-						.col-md-6.col-12 The drones should be built by the participants well in advance. The participants can perform a trial run prior to the actual event.
-							|There will be a time based qualification. 
-					br
-					.row.justify-content-center
-						.col-md-5.col-md-12.col-lg-2
-							a(href='/registrations/drone')
-								button.btn.btn-rounded.btn-block.btn-primary Register
-						.col-md-4
-						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#droneModal") Rules
-							#droneModal.modal.fade(role='dialog')
-								.modal-dialog
-									// Modal content
-									.modal-content
-										.modal-header
-											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title DRONE RACE
-										.modal-body
-												ul 
-													h5 RULES
-													li The participants are expected to build the drone beforehand.
-													li Readymade drones will not be allowed.
-													li The participants can trail run prior to start of the actual event. 
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal') Close	
-			.event_box#landcircuit
-				img(src='img/events/RcAllTerrian.jpg', alt='event')
-				.event_info
-					.event_title
-						| RC All Terrain
-					.event_date
-				.event_word
-					.row.justify-content-center
-						.col-md-6.col-12 All Qualifiers will be five (5) Minutes in length for Club Races.
-							| Lower Mains (B, C, D…) will be five (5) Minutes in length for Club Races.
-							| A Mains will be five (5) Minutes in length except for E Buggy ten (10) Minutes and Nitro fifteen (15) Minutes for Club Races.
-							| Only closed toe shoes are permitted on the track. No sandals or flip-flops allowed on the track.
-							| No children under the age of 12 years old are permitted to turn-marshal on the track.
-							| No reserving nor holding tables for others. It’s a first come first serve policy.
-							| There will be a two (2)-minute grace period between heats. All racers must immediately put their cars and radios down and get into a turn marshal position within one (1) minute.
-						.col-md-6.col-12 If you are running back-to-back you must have your marshal designate notify the race announcer and get into position within this time period.
-							| Any racer will be allowed a one (1)-minute delay once per round. There can only be one delay per heat. The penalty for not adhering to the rules will be the subtraction of one (1) lap per offence in the mains.
-							| Distractions and coaching are prohibited during race events. You will get ONE warning, then you will be removed throughout the duration of the event.
-							| If your car breaks during a race/qualifier please stop running and get it after the heat. This can become a hazard for current racers as well as impact the outcome of the race. 
-							|The marshal’s responsibility is to marshal, not repair cars during a race.
-					br
-					.row.justify-content-center
-						.col-md-5.col-md-12.col-lg-2
-							a(href='registrations/landcircuit')
-								button.btn.btn-rounded.btn-block.btn-primary Register
-						.col-md-4
-						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#landcircuitModal") Rules
-							#landcircuitModal.modal.fade(role='dialog')
-								.modal-dialog
-									// Modal content
-									.modal-content
-										.modal-header
-											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title RC ALL TERRAIN
-										.modal-body
-												ul 
-													h5 RULES
-													li All TERRAIN RACE 
-													|RC vehicles must be self made. Store bought rc vehicles are not allowed.
-													li DRONE RACE
-													|The drones should have proper permission to participate. (if required)
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal') Close
-			.event_box#pubg
-				img(src='img/events/pubg.jpg', alt='event')
-				.event_info
-					.event_title
-						| PUBG Mobile Tournament
-					.event_date
-				.event_word
-					.row.justify-content-center
-						.col-md-6.col-12 PlayerUnknown's Battlegrounds (PUBG) is an online multiplayer battle royale game developed and published by PUBG Corporation. The game is based on previous mods that were created by Brendan "PlayerUnknown" Greene for other games.
-							|In the game, up to one hundred players parachute onto an island and scavenge
-						.col-md-6.col-12 for weapons and equipment to kill others while avoiding getting killed themselves. The available safe area of the game's map decreases in 
-							|size over time, directing surviving players into tighter areas to force encounters. The last player or team standing wins the round.
-					br
-					.row.justify-content-center
-						.col-md-5.col-md-12.col-lg-2
-							a(href='registrations/pubg')
-								button.btn.btn-rounded.btn-block.btn-primary Register
-						.col-md-4
-						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#pubgModal") Rules
-							#pubgModal.modal.fade(role='dialog')
-								.modal-dialog
-									// Modal content
-									.modal-content
-										.modal-header
-											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title PUBG MOBILE TOURNAMENT
-										.modal-body
-												ul 
-													h5 RULES
-													li The game must be installed only through app store or play store. Any apk or hack versions will not be allowed.
-													li Any form of cheating or illegal teaming up with opponents will not be entertained.
-													li No friendly fire is encouraged in any manner.
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal') Close		
-				.event_box#counterstrike
-				img(src='img/events/Counter_Strike.png', alt='event')
-				.event_info
-					.event_title
-						| Counter Strike 1.6
-					.event_date
-				.event_word
-					.row.justify-content-center
-						.col-md-6.col-12 Counter-Strike is an objective-based, multiplayer first-person shooter. Two opposing teams—the Terrorists and the Counter Terrorists—compete in game modes to complete objectives, such as securing a location to plant or defuse a bomb and rescuing or guarding hostages. At the end of each round, players are rewarded
-						.col-md-6.col-12 based on their individual performance with in-game currency to spend on more powerful weapons in subsequent rounds. Winning rounds results in more money than losing, and completing objectives such as killing enemy players gives cash bonuses. Uncooperative actions, such as killing teammates, results in a penalty.
-					br
-					.row.justify-content-center
-						.col-md-5.col-md-12.col-lg-2
-							a(href='registrations/counterstrike')
-								button.btn.btn-rounded.btn-block.btn-primary Register
-						.col-md-4
-						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#counterstrikeModal") Rules
-							#counterstrikeModal.modal.fade(role='dialog')
-								.modal-dialog
-									// Modal content
-									.modal-content
-										.modal-header
-											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title COUNTER STRIKE 1.6
-										.modal-body
-												ul 
-													h5 RULES
-													li The game must be installed only through app store or play store. Any apk or hack versions will not be allowed.
-													li Any form of cheating or illegal teaming up with opponents will not be entertained.
-													li No friendly fire is encouraged in any manner.
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal') Close			
-			.event_box#adzap
-				img(src='img/events/Ad-Zap.jpg', alt='event')
-				.event_info
-					.event_title
-						| Ad - Zap
-					.event_date
-				.event_word
-					.row.justify-content-center
-						.col-md-6.col-12 
-							h6 Poster Designing & Poster Presentation ( Two Rounds )
-							|An unusual product will be given to the participants and they need to come up with innovative and creative thinking to build an advertisement of the product/service.
-							|The participants are given required materials to create/design a poster,it needs to be done within 30 min.
-
-						.col-md-6.col-12 
-							br
-							|In the second round the participants should use their marketing skills 
-							|and strategies to present their poster and give a clear view about advertising their product.
-					br
-					.row.justify-content-center
-						.col-md-5.col-md-12.col-lg-2
-							a(href='registrations/adzap')
-								button.btn.btn-rounded.btn-block.btn-primary Register
-						.col-md-4
-						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#adzapModal") Rules
-							#adzapModal.modal.fade(role='dialog')
-								.modal-dialog
-									// Modal content
-									.modal-content
-										.modal-header
-											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title AD - ZAP
-										.modal-body
-												ul 
-													h5 RULES
-													li Usage of existing brand names and taglines are not permitted.
-													li The equal contribution of both teammates is compulsary.
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal') Close
-			.event_box#contrarian
-				img(src='img/events/Contrarian.jpg', alt='event')
-				.event_info
-					.event_title
-						| Contrarian
-					.event_date
-				.event_word
-					.row.justify-content-center
-						.col-md-6.col-12
-							h6 MCQs & Trading in stock exchange ( Two Rounds )
-							|This event is based on stock exchange. In the first round a questionnaire consisting of few multiple choice questions regarding the basic concepts related to stock market and other financial securities( bonds, shares) are imposed to the participants.
-
-						.col-md-6.col-12 
-							br
-							|The students are graded on the basis of their performance in the previous round and the selected participants will be trading in stock exchange (BSE,NIFTY) of shares.
-					br
-					.row.justify-content-center
-						.col-md-5.col-md-12.col-lg-2
-							a(href='registrations/contrarian')
-								button.btn.btn-rounded.btn-block.btn-primary Register
-						.col-md-4
-						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#contrarianModal") Rules
-							#contrarianModal.modal.fade(role='dialog')
-								.modal-dialog
-									// Modal content
-									.modal-content
-										.modal-header
-											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title CONTRARIAN
-										.modal-body
-												ul 
-													h5 RULES
-													li Questions must be answered rapidly in the given time.
-													li Only graded participants will be allowed to move to the next round.
-													li All participants must be familiar with stock marketing prior to the event.
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal') Close
-			.event_box#corporateroadies
-				img(src='img/events/CorporateRoadies.jpg', alt='event')
-				.event_info
-					.event_title
-						| Corporate Roadies
-					.event_subheading
-						h5 Rounds:
-						h6
-							ul
-								li  Bounce Quiz ( General Business Questions )
-								li  You know, you grow ( about CEO’s )
-								li  Logo Logistics( Logos & Tag Lines of Companies )
-							
-					.row.justify-content-center
-						.col-md-6.col-12
-							|This event is a business quiz which is a fusion of all the major aspects involved in management. 
-							|In the first round general business questions are imposed and are passed to the other team if it is unknown by the previous team.
-							|The participants are then graded and in the second round questions regarding CEO’s of the company are
-							| imposed.
-	
-						.col-md-6.col-12 The students are further graded and the third round is a buzzer round. 
-							|In the final round the participants need to answer the questions imposed on the basis of logos and tag lines of the companies.
-					br
-					.row.justify-content-center
-						.col-md-5.col-md-12.col-lg-2
-							a(href='registrations/roadies')
-								button.btn.btn-rounded.btn-block.btn-primary Register
-						.col-md-4
-						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#roadiesModal") Rules
-							#roadiesModal.modal.fade(role='dialog')
-								.modal-dialog
-									// Modal content
-									.modal-content
-										.modal-header
-											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title CORPORATE ROADIES
-										.modal-body
-												ul 
-													h5 RULES
-													li Questions will only be given if the previous questions are answered.
-													li Questions must be answered in the given amount of time. Answering After the time elapses will result in deduction of points.
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal') Close
-			.event_box#espritdecorps
-				img(src='img/events/Espirt-De_Corps.jpg', alt='event')
-				.event_info
-					.event_title
-						| Esprit de corps
-					.event_date
-				.event_word
-					.row.justify-content-center
-						.col-md-6.col-12
-							h6 Collecting the materials & Building the product ( Two Rounds )
-							|A team of four candidates plan /frame strategies as three players will be blind folded but are allowed to talk 
-							|and the other individual can see but isn’t permitted to talk. On the basis of their communication
-							|strategy,team work the players collect the things assembled on the table.
-						.col-md-6.col-12 
-							br
-							|In the second round the team is collectively 
-							|supposed to build a product with the items collected in the previous round. In this round the product needs to be designed 
-							|and showcased to convience /impress the panel members and the audience.
-					br
-					.row.justify-content-center
-						.col-md-5.col-md-12.col-lg-2
-							a(href='registrations/esprit')
-								button.btn.btn-rounded.btn-block.btn-primary Register
-						.col-md-4
-						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#decorpsModal") Rules
-							#decorpsModal.modal.fade(role='dialog')
-								.modal-dialog
-									// Modal content
-									.modal-content
-										.modal-header
-											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title ESPRIT DE CORPS
-										.modal-body
-												ul 
-													h5 RULES
-													li Leader is not allowed to have any sort of contact with his team members.
-													li The participants have to pick up any product they touch.
-										.modal-footer
-											button.btn.btn-default(type='button', data-dismiss='modal') Close
-			.event_box#youngmanager
-				img(src='img/events/YoungManager.jpg', alt='event')
-				.event_info
-					.event_title 
-						|Young Manager
-					.event_subtitle
-						h5 Rounds:
-						h6
-							ul
-								li Just a minute
-								li Turn Coat
-								li Shipwreck
-								li Stress management
-
-					.event_date
-				.event_word
-					.row.justify-content-center
-						.col-md-6.col-12
-							|In the first round the participant would be given a topic and has to speek for a minute. 
-							|In the second round a random topic would be given and the participant has to instantly speak “for or against” the topic if he/she 
-							|starts by talking about “for” the topic, when the judge commands “switch” where he/she has to switch the topic and speak on “against” and 
-							|vice versa.
-						.col-md-6.col-12  In the third round a situation would be given like the ship is sinking and the captain has only one life jacket left, convince 
-							|the captain so as to earn the life jacket. In the last round the panel members continuously impose questions to the participant in order to 
-							|test his/her patience , presence of mind and stress level management.
-					br
-					.row.justify-content-center
-						.col-md-5.col-md-12.col-lg-2
-							a(href='registrations/manager')
-								button.btn.btn-rounded.btn-block.btn-primary Register
-						.col-md-4
-						.col-md-5.col-md-12.col-lg-2
-							button.btn.btn-rounded.btn-block.btn-primary(data-toggle="modal" data-target="#managerModal") Rules
-							#managerModal.modal.fade(role='dialog')
-								.modal-dialog
-									// Modal content
-									.modal-content
-										.modal-header
-											button.close(type='button', data-dismiss='modal') ×
-											h4.modal-title YOUNG MANAGER
-										.modal-body
-												ul 
-													h5 RULES
-													li Participants must adhere to the given time constrain.
-													li The winner will be decided according to the number of questions answered by the remaining participants in the stress management round.
+													for rule in event.rules
+														li #{rule}
 										.modal-footer
 											button.btn.btn-default(type='button', data-dismiss='modal') Close
 	// Events Section End

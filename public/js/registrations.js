@@ -65,7 +65,7 @@ function validated() {
 		$("#phoneInput").addClass('is-invalid');
 		return false;
 	}
-	if (emailProvider.length !== 2 || !emailProvider[1].includes(".") || emailProvider[1].split(".").length !== 2) {
+	if (emailProvider.length == 0) {
 		$("#emailInput").addClass('is-invalid');
 		return false;
 	}
