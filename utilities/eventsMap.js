@@ -1,7 +1,7 @@
 module.exports = {
 	hackathon: {
 		id: "hackathon",
-		prize: 3000,
+		prize: "Worth 30,000",
 		title: 'Hackathon',
 		price: 250,
 		date: "March 15 & 16, 2019",
@@ -21,7 +21,7 @@ module.exports = {
 	},
 	landcircuit: {
 		id: "landcircuit",
-		prize: 3000,
+		prize: "Worth 8,000",
 		title: "Land Circuit",
 		price: 300,
 		date: "March 15, 2019",
@@ -37,7 +37,7 @@ module.exports = {
 	},
 	drone: {
 		id: "drone",
-		prize: 3000,
+		prize: "Worth 8,000",
 		title: "Drone Races",
 		price: 300,
 		date: "March 16, 2019",
@@ -55,7 +55,7 @@ module.exports = {
 	},
 	coding: {
 		id: 'coding',
-		prize: 3000,
+		prize: "Worth 30,000",
 		title: 'Coding Competition',
 		price: 150,
 		date: "March 16, 2019",
@@ -72,7 +72,7 @@ module.exports = {
 	},
 	expo: {
 		id: 'expo',
-		prize: 3000,
+		prize: "Worth 25,000",
 		title: 'Project Expo',
 		price: 100,
 		date: "March 15, 2019",
@@ -90,7 +90,7 @@ module.exports = {
 	},
 	counterstrike: {
 		id: 'counterstrike',
-		prize: 3000,
+		prize: "Wroth 11,500",
 		title: 'Counter Strike 1.6',
 		price: 250,
 		date: "March 15 & 16, 2019",
@@ -108,7 +108,7 @@ module.exports = {
 	},
 	pubg: {
 		id: 'pubg',
-		prize: 3000,
+		prize: "Worth 16,000",
 		title: 'PUBG Mobile Tournament',
 		price: 250,
 		date: "March 15 & 16, 2019",
@@ -126,7 +126,7 @@ module.exports = {
 	},
 	adzap: {
 		id: 'adzap',
-		prize: 3000,
+		prize: "Worth 7,000",
 		title: 'Ad - Zap',
 		price: 100,
 		date: "March 15, 2019",
@@ -144,7 +144,7 @@ module.exports = {
 	},
 	contrarian: {
 		id: 'contrarian',
-		prize: 3000,
+		prize: "Worth 9,000",
 		title: 'Contrarian',
 		price: 200,
 		date: "March 15, 2019",
@@ -163,7 +163,7 @@ module.exports = {
 	},
 	manager: {
 		id: 'manager',
-		prize: 3000,
+		prize: "Worth 9,000",
 		title: 'Young Manager',
 		price: 300,
 		date: "March 16, 2019",
@@ -186,7 +186,7 @@ module.exports = {
 	},
 	roadies: {
 		id: 'roadies',
-		prize: 3000,
+		prize: "Worth 3,500",
 		title: 'Corporate Roadies',
 		price: 200,
 		date: "March 16, 2019",
@@ -208,7 +208,7 @@ module.exports = {
 	},
 	esprit: {
 		id: 'esprit',
-		prize: 3000,
+		prize: "Worth 3,500",
 		title: 'Espirit de Corps',
 		price: 100,
 		date: "March 15, 2019",

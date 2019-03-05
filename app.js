@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var enforce = require('express-sslify');
+// var enforce = require('express-sslify');
 var models = require('./utilities/registrationModels');
 
 var indexRouter = require('./routes/index');
@@ -14,7 +14,7 @@ var registrationsRouter = require('./routes/registrations');
 var app = express();
 
 // Enforce SSL 
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
+// app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 // DB connection
 mongoose.connect("mongodb://pass_handler:Ivarna2019@ds149215-a0.mlab.com:49215,ds149215-a1.mlab.com:49215/heroku_zn55qrq5?replicaSet=rs-ds149215", { useNewUrlParser: true }).then(function (value) {
