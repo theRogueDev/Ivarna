@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var events = require('../utilities/eventsMap');
 
 router.get('/', function (req, res, next) {
 	res.render('index', { title: 'Ivarna | Home' });
@@ -10,7 +11,7 @@ router.get('/contact', function (req, res) {
 });
 
 router.get('/events', function (req, res) {
-	res.render('events', { title: 'Ivarna | Events' });
+	res.render('events', { title: 'Ivarna | Events', events: events });
 });
 
 router.get('/edmnight', function (req, res) {
