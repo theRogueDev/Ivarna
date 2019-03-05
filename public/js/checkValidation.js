@@ -67,7 +67,7 @@ function validatePreEntries() {
 		proper = false;
 		$("#phoneInput").addClass('is-invalid');
 	}
-	if (emailProvider.length !== 2 || !emailProvider[1].includes(".") || emailProvider[1].split(".").length !== 2) {
+	if (emailProvider.length == 0) {
 		proper = false;
 		$("#emailInput").addClass('is-invalid');
 	}
