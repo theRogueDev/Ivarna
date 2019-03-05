@@ -23,11 +23,16 @@ block body-pack
 					.event_info
 						.event_title
 							| #{event.title}
-						.event_subtitle
+						.event_subheading
+							strong Prizes #{event.prize} INR
+						.event_subheading
+							if (event.price == 0) 
+								strong Registration is free
+							else
+								strong Registration is #{event.price} INR
+						.event_date
 							strong Date & Time
 							span  #{event.datetime}
-						.event_date
-							strong Prizes #{event.prize}
 						if (event.rounds != undefined)
 							br
 							.event_subheading
@@ -48,7 +53,7 @@ block body-pack
 					br
 					.row.justify-content-center
 						.col-md-5.col-md-12.col-lg-2
-							a(href='registrations/hackathon') 
+							a(href='registrations/' + event.id) 
 								button.btn.btn-rounded.btn-block.btn-primary Register
 						.col-md-4
 						.col-md-5.col-md-12.col-lg-2

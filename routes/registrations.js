@@ -77,21 +77,6 @@ router.post('/:event/register', function (req, res) {
 		transaction.abstract = data.abstract;
 	}
 
-
-	// Create params for gateway
-
-	var key = "E7yyNS2mbS2SE2&r";
-	var params = {};
-	params['MID'] = "ZhCLfm38291372078650";
-	params['WEBSITE'] = "DEFAULT";
-	params['CHANNEL_ID'] = "WEB";
-	params['INDUSTRY_TYPE_ID'] = "Retail";
-	params['ORDER_ID'] = transaction.order_id;
-	params['CUST_ID'] = data.email;
-	params['TXN_AMOUNT'] = event.price;
-	params['CALLBACK_URL'] = "https://ivarna.klh.edu.in/registrations/" + event.id + "/response";
-	params['EMAIL'] = data.email;
-
 	Model.create(transaction, function (err, resp) {
 		if (err) {
 			console.log(err);
@@ -100,21 +85,73 @@ router.post('/:event/register', function (req, res) {
 		}
 	});
 
-	checksum.genchecksum(params, key, function (err, checksum) {
-		if (err) console.log(err);
-		params['CHECKSUMHASH'] = checksum;
-		res.send(JSON.stringify(params));
-	})
+	// Create params for gateway (unnecessary for free events)
+
+	if (event.price == 0) {
+		// Confirm status and log it in MongoDB,
+		// then render the response & send email
+		qrcode.toDataURL({ 'order_id': transaction.order_id }, function (err, qr) {
+			if (err) console.log(err);
+			console.log(qr);
+			var qrcode = `<img src='${qr}'>`;
+			var date = new Date();
+			var date = date.toDateString();
+			var locals = {
+				order_id: transaction.order_id,
+				amount: "Free",
+				date: date,
+				payment_method: "N/A",
+				quantity: transaction.size,
+				qrcode: qrcode,
+				event_date: event.date,
+				itemline: event.title + " Registration",
+				headline: "Registration Confirmed",
+				title: "Ivarna | " + event.title + " Registration Confirmed"
+			};
+			var mailOptions = {
+				from: 'ivarna@klh.edu.in',
+				to: transaction.email,
+				subject: 'Your registration is complete for ' + event.title,
+				html: pug.renderFile(path.join(__dirname, '..', 'views', 'pay', 'receipt.pug'), locals)
+			};
+
+			transporter.sendMail(mailOptions).then(function (value) {
+				console.log(value);
+			}).catch(function (reason) {
+				console.log(reason);
+			});
+
+			res.render('pay/receipt', locals);
+		});
+	} else {
+		// Generate a checksum and hand off to frontend for redirection to payment gateway
+		var key = "E7yyNS2mbS2SE2&r";
+		var params = {};
+		params['MID'] = "ZhCLfm38291372078650";
+		params['WEBSITE'] = "DEFAULT";
+		params['CHANNEL_ID'] = "WEB";
+		params['INDUSTRY_TYPE_ID'] = "Retail";
+		params['ORDER_ID'] = transaction.order_id;
+		params['CUST_ID'] = data.email;
+		params['TXN_AMOUNT'] = event.price;
+		params['CALLBACK_URL'] = "https://ivarna.klh.edu.in/registrations/" + event.id + "/response";
+		params['EMAIL'] = data.email;
+
+
+		checksum.genchecksum(params, key, function (err, checksum) {
+			if (err) console.log(err);
+			params['CHECKSUMHASH'] = checksum;
+			res.send(JSON.stringify(params));
+		});
+	}
+
+
 });
 
 router.post('/:event/response', function (req, res) {
 	var event = req.params.event;
 	var response = req.body;
 	var Model = models[event];
-
-	console.log(Model);
-	console.log(response);
-	console.log(event);
 
 	if (response.RESPCODE == 1) {
 		Model.findOne({ order_id: response.ORDERID }, function (err, doc) {
