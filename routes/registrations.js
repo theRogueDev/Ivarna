@@ -65,9 +65,13 @@ router.post('/:event/register', function (req, res) {
 	transaction.email = data.email;
 	transaction.leaderName = data.contactName;
 	transaction.university = data.university;
-	transaction.status = "PENDING";
 	transaction.order_id = uuidv1();
 	transaction.members = membersList;
+	if (event.price == 0) {
+		transaction.status = "CONFIRMED";
+	} else {
+		transaction.status = "PENDING";
+	}
 
 	if (event.id == 'expo') {
 		transaction.projectTitle = data.projectTitle;
