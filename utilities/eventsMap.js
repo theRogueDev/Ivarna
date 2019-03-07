@@ -22,7 +22,7 @@ module.exports = {
 	landcircuit: {
 		id: "landcircuit",
 		prize: "Worth 8,000",
-		title: "Land Circuit",
+		title: "RC Sports",
 		price: 150,
 		date: "March 15, 2019",
 		requiredSize: 2,
