@@ -49,11 +49,9 @@ router.post('/checkout', function (req, res) {
 
 	console.log(data);
 
-	if (data.passType == 'vip') {
-		amount = data.numPasses * 800;
-	} else {
+	if (data.passType == 'pass') {
 		amount = data.numPasses * 500;
-	}
+	} 
 
 	for (var key in data) {
 		if (key.includes('firstName-')) {
