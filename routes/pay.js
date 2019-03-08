@@ -48,10 +48,8 @@ router.post('/checkout', function (req, res) {
 	var amount;
 
 	console.log(data);
-
-	if (data.passType == 'pass') {
-		amount = data.numPasses * 500;
-	} 
+	
+	amount = data.numPasses * 500;
 
 	for (var key in data) {
 		if (key.includes('firstName-')) {
