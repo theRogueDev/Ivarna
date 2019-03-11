@@ -13,7 +13,7 @@ module.exports = {
 		rightBlock: "Think of it as a modern day barn raising, where the collective energy of community members is harnessed into action.",
 		datetime: "March 15 - 16, 2019",
 		rules: [
-			"eligibility : 16 - 22 years(Age Proof Mandatory)",
+			"Eligibility : 16 - 22 years(Age Proof Mandatory)",
 			"Accommodation available for Hackathon.",
 			"All components required must be brought by the participants.",
 			"Computers will be provided by the university provided prior information is given.",
@@ -28,7 +28,7 @@ module.exports = {
 		title: "RC Sports",
 		price: 150,
 		date: "March 15, 2019",
-		eligibility:"16 - 22 years(Age Proof Mandatory)",
+		Eligibility:"16 - 22 years(Age Proof Mandatory)",
 		requiredSize: 2,
 		maxSize: 3,
 		imgPath: "RcAllTerrain.jpg",
@@ -36,7 +36,7 @@ module.exports = {
 		rightBlock: "custom-built rc car on a track professionally designed to bring the most out of you. Feel the rush and win incredible prizes.",
 		datetime: "March 15, 2019",
 		rules: [
-			"eligibility : 16 - 22 years(Age Proof Mandatory)",
+			"Eligibility : 16 - 22 years(Age Proof Mandatory)",
 			"vehicles must be self made. Store bought rc vehicles are not allowed."
 		]
 	},
@@ -46,7 +46,7 @@ module.exports = {
 		title: "Drone Races",
 		price: 300,
 		date: "March 16, 2019",
-		eligibility:"16 - 22 years(Age Proof Mandatory)",
+		Eligibility:"16 - 22 years(Age Proof Mandatory)",
 		requiredSize: 1,
 		maxSize: 3,
 		imgPath: "DroneRacing.jpg",
@@ -54,7 +54,7 @@ module.exports = {
 		rightBlock: "The drones should be built by the participants well in advance. The participants can perform a trial run prior to the actual event. There will be a time based qualification.",
 		datetime: "March 15, 2019",
 		rules: [
-			"eligibility : 16 - 22 years(Age Proof Mandatory)",
+			"Eligibility : 16 - 22 years(Age Proof Mandatory)",
 			"The participants are expected to build the drone beforehand.",
 			"Ready-made drones will not be allowed.",
 			"The participants can trail run prior to start of the actual event."
@@ -66,7 +66,7 @@ module.exports = {
 		title: 'Coding Competition',
 		price: 0,
 		date: "March 16, 2019",
-		eligibility:"16 - 22 years(Age Proof Mandatory)",
+		Eligibility:"16 - 22 years(Age Proof Mandatory)",
 		requiredSize: 1,
 		maxSize: 3,
 		imgPath: "Coding.jpg",
@@ -74,7 +74,7 @@ module.exports = {
 		rightBlock: "the contest to the submission of the first accepted run plus 20 penalty minutes for every previously rejected run for that problem (Wrong answer, Time limit exceeded, Runtime Error, Compilation Error). There is no time consumed for a problem that is not solved. The contest will consist of multiple rounds, with teams progressing in every round.",
 		datetime: "March 15, 2019",
 		rules: [
-			"eligibility : 16 - 22 years(Age Proof Mandatory)",
+			"Eligibility : 16 - 22 years(Age Proof Mandatory)",
 			"It is advisable for the participants to bring their own laptops for the competition.",
 			"Installation of required software must be completed before the event starts."
 		]
@@ -93,7 +93,7 @@ module.exports = {
 		rightBlock: "This Project Expo will motivate the students to a whole new level as they demonstrate their projects to other students, representatives from Institutes etc. getting their views, reviews & appreciations.",
 		datetime: "March 15, 2019",
 		rules: [
-			"eligibility : Age below 22 years(Age Proof Mandatory)",
+			"Eligibility : Age below 22 years(Age Proof Mandatory)",
 			"Poster presentation is purely digital.Get your Own Laptops.",
 			"In paper presentation abstracts should be made presentable for the competition. The idea with futuristic implementation plan is compulsary.",
 			"In poster presentation all materials required must be brought by the participants. No exchanges of problem statements will be done",
@@ -114,7 +114,7 @@ module.exports = {
 		rightBlock: "based on their individual performance with in-game currency to spend on more powerful weapons in subsequent rounds. Winning rounds results in more money than losing, and completing objectives such as killing enemy players gives cash bonuses. Uncooperative actions, such as killing teammates, results in a penalty.",
 		datetime: "",
 		rules: [
-			"eligibility : 16 - 22 years(Age Proof Mandatory)",
+			"Eligibility : 16 - 22 years(Age Proof Mandatory)",
 			"The game must be installed only through app store or play store. Any apk or hack versions will not be allowed.",
 			"Any form of cheating or illegal teaming up with opponents will not be entertained.",
 			"No friendly fire is encouraged in any manner."
@@ -126,7 +126,7 @@ module.exports = {
 		title: 'PUBG Mobile Tournament',
 		price: 400,
 		date: "March 15 & 16, 2019",
-		eligibility:"16 - 22 years(Age Proof Mandatory)",
+		Eligibility:"16 - 22 years(Age Proof Mandatory)",
 		requiredSize: 2,
 		maxSize: 4,
 		imgPath: "pubg.jpg",
@@ -134,7 +134,7 @@ module.exports = {
 		rightBlock: "For weapons and equipment to kill others while avoiding getting killed themselves. The available safe area of the game's map decreases in size over time, directing surviving players into tighter areas to force encounters. The last player or team standing wins the round.",
 		datetime: "March 15, 2019",
 		rules: [
-			"eligibility : 16 - 22 years(Age Proof Mandatory)",
+			"Eligibility : 16 - 22 years(Age Proof Mandatory)",
 			"The game must be installed only through app store or play store. Any apk or hack versions will not be allowed.",
 			"Any form of cheating or illegal teaming up with opponents will not be entertained.",
 			"No friendly fire is encouraged in any manner."
@@ -155,7 +155,7 @@ module.exports = {
 		rightBlock: "In the second round the participants should use their marketing skills and strategies to present their poster and give a clear view about advertising their product.",
 		datetime: "March 15, 2019",
 		rules: [
-			"eligibility : 17 - 25 years(Age Proof Mandatory)",
+			"Eligibility : 17 - 25 years(Age Proof Mandatory)",
 			"Usage of existing brand names and taglines are not permitted.",
 			"The equal contribution of both teammates is compulsary."
 		]
@@ -175,7 +175,7 @@ module.exports = {
 		rightBlock: "The students are graded on the basis of their performance in the previous round and the selected participants will be trading in stock exchange (BSE,NIFTY) of shares.",
 		datetime: "March 15, 2019",
 		rules: [
-			"eligibility : 17 - 25 years(Age Proof Mandatory)",
+			"Eligibility : 17 - 25 years(Age Proof Mandatory)",
 			"Questions must be answered rapidly in the given time.",
 			"Only graded participants will be allowed to move to the next round.",
 			"All participants must be familiar with stock marketing prior to the event."
@@ -195,7 +195,7 @@ module.exports = {
 		rightBlock: "In the third round a situation would be given like the ship is sinking and the captain has only one life jacket left, convince the captain so as to earn the life jacket. In the last round the panel members continuously impose questions to the participant in order to test his/her patience , presence of mind and stress level management.",
 		datetime: "March 15, 2019",
 		rules: [
-			"eligibility : 17 - 25 years(Age Proof Mandatory)",
+			"Eligibility : 17 - 25 years(Age Proof Mandatory)",
 			"Participants must adhere to the given time constraint.",
 			"The winner will be decided according to the number of questions answered by the remaining participants in the stress management round."
 		],
@@ -220,7 +220,7 @@ module.exports = {
 		rightBlock: "The students are further graded and the third round is a buzzer round. In the final round the participants need to answer the questions imposed on the basis of logos and tag lines of the companies.",
 		datetime: "March 15, 2019",
 		rules: [
-			"eligibility : 17 - 25 years(Age Proof Mandatory)",
+			"Eligibility : 17 - 25 years(Age Proof Mandatory)",
 			"Questions must be answered in the given amount of time.",
 			"Answering after the time elapses will result in zero points."
 		],
@@ -245,7 +245,7 @@ module.exports = {
 		rightBlock: "In the second round the team is collectively supposed to build a product with the items collected in the previous round. In this round the product needs to be designed and showcased to convience /impress the panel members and the audience.",
 		datetime: "March 15, 2019",
 		rules: [
-			"eligibility : 17 - 25 years(Age Proof Mandatory)",
+			"Eligibility : 17 - 25 years(Age Proof Mandatory)",
 			"Leader is not allowed to have any sort of contact with his team members.",
 			"The participants have to pick up any product they touch."
 		]
