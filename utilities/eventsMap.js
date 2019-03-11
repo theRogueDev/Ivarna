@@ -14,7 +14,7 @@ module.exports = {
 		datetime: "March 15 - 16, 2019",
 		rules: [
 			"eligibility : 16 - 22 years(Age Proof Mandatory)",
-			"Accomidation available for Hackathon.",
+			"Accommodation available for Hackathon.",
 			"All components required must be brought by the participants.",
 			"Computers will be provided by the university provided prior information is given.",
 			"Participants should not bring pre-made prototypes or programs, if found the team will immediately be disqualified.",
