@@ -97,7 +97,7 @@ router.post('/:event/register', function (req, res) {
 		qrcode.toDataURL({ 'order_id': transaction.order_id }, function (err, qr) {
 			if (err) console.log(err);
 			console.log(qr);
-			var qrcode = `<img src='${qr}'>`;
+			var code = `<img src='${qr}'>`;
 			var date = new Date();
 			var date = date.toDateString();
 			var locals = {
@@ -106,7 +106,7 @@ router.post('/:event/register', function (req, res) {
 				date: date,
 				payment_method: "N/A",
 				quantity: transaction.size,
-				qrcode: qrcode,
+				qrcode: code,
 				event_date: event.date,
 				itemline: event.title + " Registration",
 				headline: "Registration Confirmed",
