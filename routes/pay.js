@@ -122,7 +122,7 @@ router.post('/response', function (req, res) {
 
 		EdmPass.findOne({ order_id: response.ORDERID }, function (err, doc) {
 			qrcode.toDataURL(response.ORDERID, function (err, qr) {
-				var qrcode = `<img src='${qr}'>`;
+				var code = `<img src='${qr}'>`;
 				var locals = {
 					order_id: response.ORDERID,
 					amount: response.TXNAMOUNT,
@@ -132,7 +132,7 @@ router.post('/response', function (req, res) {
 					event_date: "March 16, 2019",
 					itemline: "EDM Passes",
 					headline: "Passes Confirmed",
-					qrcode: qrcode,
+					qrcode: code,
 					title: "Ivarna | EDM Passes Confirmed"
 				};
 				var mailOptions = {
