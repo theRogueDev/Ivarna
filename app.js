@@ -10,6 +10,7 @@ var models = require('./utilities/registrationModels');
 var indexRouter = require('./routes/index');
 var payRouter = require('./routes/pay');
 var registrationsRouter = require('./routes/registrations');
+var checkRouter = require('./routes/check');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/pay', payRouter);
 app.use('/registrations', registrationsRouter);
+app.use('/check', checkRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
