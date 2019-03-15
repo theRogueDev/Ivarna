@@ -52,7 +52,7 @@ module.exports = {
 		imgPath: "DroneRacing.jpg",
 		leftBlock: "Racing drone is a small quadcopter unmanned aerial vehicle (UAV) that is purpose-built to compete in FPV (first person view) racing events held in most major cities around the world. ",
 		rightBlock: "The drones should be built by the participants well in advance. The participants can perform a trial run prior to the actual event. There will be a time based qualification.",
-		datetime: "March 15, 2019",
+		datetime: "March 16, 2019",
 		rules: [
 			"Eligibility : 16 - 22 years(Age Proof Mandatory)",
 			"The participants are expected to build the drone beforehand.",
