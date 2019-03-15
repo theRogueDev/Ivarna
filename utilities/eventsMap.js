@@ -112,7 +112,7 @@ module.exports = {
 		imgPath: "Counter_Strike.png",
 		leftBlock: "Counter-Strike is an objective-based, multiplayer first-person shooter. Two opposing teams—the Terrorists and the Counter Terrorists—compete in game modes to complete objectives, such as securing a location to plant or defuse a bomb and rescuing or guarding hostages. At the end of each round, players are rewarded",
 		rightBlock: "based on their individual performance with in-game currency to spend on more powerful weapons in subsequent rounds. Winning rounds results in more money than losing, and completing objectives such as killing enemy players gives cash bonuses. Uncooperative actions, such as killing teammates, results in a penalty.",
-		datetime: "",
+		datetime: "15 March",
 		rules: [
 			"Eligibility : 16 - 22 years(Age Proof Mandatory)",
 			"The game must be installed only through app store or play store. Any apk or hack versions will not be allowed.",
@@ -132,7 +132,7 @@ module.exports = {
 		imgPath: "pubg.jpg",
 		leftBlock: "PlayerUnknown's Battlegrounds (PUBG) is an online multiplayer battle royale game developed and published by PUBG Corporation. The game is based on previous mods that were created by Brendan 'PlayerUnknown' Greene for other games. In the game, up to one hundred players parachute onto an island and scavenge",
 		rightBlock: "For weapons and equipment to kill others while avoiding getting killed themselves. The available safe area of the game's map decreases in size over time, directing surviving players into tighter areas to force encounters. The last player or team standing wins the round.",
-		datetime: "March 15, 2019",
+		datetime: "March 15 & 16, 2019",
 		rules: [
 			"Eligibility : 16 - 22 years(Age Proof Mandatory)",
 			"The game must be installed only through app store or play store. Any apk or hack versions will not be allowed.",
@@ -193,7 +193,7 @@ module.exports = {
 		imgPath: "YoungManager.jpg",
 		leftBlock: "In the first round the participant would be given a topic and has to speek for a minute. In the second round a random topic would be given and the participant has to instantly speak “for or against” the topic if he/she starts by talking about “for” the topic, when the judge commands “switch” where he/she has to switch the topic and speak on “against” and vice versa.",
 		rightBlock: "In the third round a situation would be given like the ship is sinking and the captain has only one life jacket left, convince the captain so as to earn the life jacket. In the last round the panel members continuously impose questions to the participant in order to test his/her patience , presence of mind and stress level management.",
-		datetime: "March 15, 2019",
+		datetime: "March 16, 2019",
 		rules: [
 			"Eligibility : 17 - 25 years(Age Proof Mandatory)",
 			"Participants must adhere to the given time constraint.",
@@ -218,7 +218,7 @@ module.exports = {
 		imgPath: "CorporateRoadies.jpg",
 		leftBlock: "This event is a business quiz which is a fusion of all the major aspects involved in management. In the first round general business questions are imposed and are passed to the other team if it is unknown by the previous team. The participants are then graded and in the second round questions regarding CEO’s of the company are imposed.",
 		rightBlock: "The students are further graded and the third round is a buzzer round. In the final round the participants need to answer the questions imposed on the basis of logos and tag lines of the companies.",
-		datetime: "March 15, 2019",
+		datetime: "March 16, 2019",
 		rules: [
 			"Eligibility : 17 - 25 years(Age Proof Mandatory)",
 			"Questions must be answered in the given amount of time.",
