@@ -72,7 +72,7 @@ module.exports = {
 		imgPath: "Coding.jpg",
 		leftBlock: "The contest is open to anyone with a knack for programming. It is a team contest with each team having a maximum of two members from the same institution. Teams will be ranked as per the number of problems solved. Ties will be broken by the total time for each user in ascending order of time. Total time is the sum of the time consumed for each problem solved.  The time consumed for a solved problem is the time elapsed from the beginning of ",
 		rightBlock: "the contest to the submission of the first accepted run plus 20 penalty minutes for every previously rejected run for that problem (Wrong answer, Time limit exceeded, Runtime Error, Compilation Error). There is no time consumed for a problem that is not solved. The contest will consist of multiple rounds, with teams progressing in every round.",
-		datetime: "March 15, 2019",
+		datetime: "March 16, 2019",
 		rules: [
 			"Eligibility : 16 - 22 years(Age Proof Mandatory)",
 			"It is advisable for the participants to bring their own laptops for the competition.",
