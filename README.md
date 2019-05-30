@@ -19,7 +19,7 @@ The following languages, frameworks, APIs, and services were used to create the 
 
 ## Developers
 
-Abhishek Kasireddy - Lead Developer & Architect
+Abhishek Kasireddy - Lead & Backend Developer
 
 Nitin Gundu - Security
 
