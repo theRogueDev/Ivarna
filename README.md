@@ -21,6 +21,8 @@ The following languages, frameworks, APIs, and services were used to create the 
 
 Abhishek Kasireddy - Lead & Backend Developer
 
-Nitin Gundu - Security
-
 Achuth Rajula - Frontend Developer
+
+Kiriti Gunukuntla - Frontend Developer
+
+Nitin Gundu - Security
